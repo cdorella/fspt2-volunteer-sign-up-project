@@ -10,9 +10,9 @@ routes.get("/", (req, res) => {
 	});
 });
 
-// TO BE MODIFIED ACCORDING TO MY FUTURE DB INFO
-routes.get("/users", (req, res) => {
-	db("SELECT * FROM users;").then(results => {
+// TBC
+routes.get("/api/project", (req, res) => {
+	db("SELECT * FROM event_tasks;").then(results => {
 		if (results.error) {
 			res.status(400).send({ message: "Error" });
 		}
