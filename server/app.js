@@ -3,14 +3,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const apiRoutes = require("./routes");
+const apiRoutes = require("./api");
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use("/server", apiRoutes);
+app.use("/api", apiRoutes);
 
 app.get("/", (req, res) => {
 	res.send({

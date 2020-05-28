@@ -1,18 +1,15 @@
 const express = require("express");
-
 const db = require("./lib/db");
+const router = express.Router();
 
-const routes = express.Router();
-
-routes.get("/", (req, res) => {
+router.get("/", (req, res) => {
 	res.send({
 		message: "Hello World",
 	});
 });
 
-// TBC
-routes.get("/api/project", (req, res) => {
-	db("SELECT * FROM event_tasks;").then(results => {
+router.get("/projects", (req, res) => {
+	db("SELECT * FROM events;").then(results => {
 		if (results.error) {
 			res.status(400).send({ message: "Error" });
 		}
@@ -20,4 +17,4 @@ routes.get("/api/project", (req, res) => {
 	});
 });
 
-module.exports = routes;
+module.exports = router;
