@@ -12,6 +12,7 @@ const con = mysql.createConnection({
 	password: DB_PASS,
 	database: DB_NAME || "sign_up_project",
 	multipleStatements: true,
+	dateStrings: true,
 });
 
 con.connect(function (err) {
@@ -40,14 +41,14 @@ con.connect(function (err) {
 	});
 
 	let createEventTasksQuery =
-		"DROP TABLE if exists event_tasks; CREATE TABLE event_tasks(id INT NOT NULL AUTO_INCREMENT, event_id INT NOT NULL, task_id INT NOT NULL, spots_available INT NOT NULL, PRIMARY KEY (id), FOREIGN KEY (event_id) REFERENCES events (id), FOREIGN KEY (task_id) REFERENCES tasks (id));";
+		"DROP TABLE if exists event_tasks; CREATE TABLE event_tasks(id INT NOT NULL AUTO_INCREMENT, event_id INT NOT NULL, task_id INT NOT NULL, spots_available INT NOT NULL, FOREIGN KEY (event_id) REFERENCES events (id), FOREIGN KEY (task_id) REFERENCES tasks (id), PRIMARY KEY (id));";
 	con.query(createEventTasksQuery, function (err, result) {
 		if (err) throw err;
 		console.log("Table creation `event_tasks` was successful!");
 	});
 
 	let createTasksVolunteersQuery =
-		"DROP TABLE if exists tasks_volunteers; CREATE TABLE tasks_volunteers(id INT NOT NULL AUTO_INCREMENT, selected_task_id INT NOT NULL, volunteer_id INT NOT NULL, confirmed TINYINT NOT NULL DEFAULT 1, PRIMARY KEY (id), FOREIGN KEY (selected_task_id) REFERENCES event_tasks (id),FOREIGN KEY (volunteer_id) REFERENCES volunteers (id));";
+		"DROP TABLE if exists tasks_volunteers; CREATE TABLE tasks_volunteers(id INT NOT NULL AUTO_INCREMENT, selected_task_id INT NOT NULL, volunteer_id INT NOT NULL, confirmed TINYINT NOT NULL DEFAULT 1, FOREIGN KEY (selected_task_id) REFERENCES event_tasks (id),FOREIGN KEY (volunteer_id) REFERENCES volunteers (id), PRIMARY KEY (id));";
 	con.query(createTasksVolunteersQuery, function (err, result) {
 		if (err) throw err;
 		console.log("Table creation `tasks_volunteers` was successful!");

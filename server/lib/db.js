@@ -18,6 +18,7 @@ module.exports = async function db(query) {
 			password: DB_PASS,
 			database: DB_NAME || "database",
 			multipleStatements: true,
+			dateStrings: true,
 		});
 
 		con.connect(function (err) {
