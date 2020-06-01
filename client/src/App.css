@@ -16,3 +16,35 @@
 .active-item {
 	color: red;
 }
+
+.page-container {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	min-height: 100vh;
+}
+
+.content-wrap {
+	flex: 1;
+}
+
+.main-header {
+	color: white;
+	background-color: darkgreen;
+	padding: 1em;
+	position: relative;
+	width: 100%;
+}
+
+.main-footer {
+	color: white;
+	background-color: darkgreen;
+	padding: 1em;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+}
+
+.link {
+	color: white;
+}
