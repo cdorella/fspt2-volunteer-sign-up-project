@@ -10,8 +10,8 @@ class HomePage extends React.Component {
 			error: false,
 			eventsLoaded: false,
 			events: [],
+			// selectedEvent: false,
 			eventDetails: {},
-			selectedEvent: " ",
 		};
 	}
 
@@ -29,19 +29,21 @@ class HomePage extends React.Component {
 			});
 	};
 
-	getEventByID(eventId) {
+	getEventByID = eventId => () => {
 		fetch(`/api/events/${eventId}`)
 			.then(response => response.json())
 			.then(response => {
+				//console.log(response);
 				this.setState({
 					eventDetails: response,
 					eventsLoaded: false,
+					// selectedEvent: true,
 				});
 			})
 			.catch(() => {
 				this.setState({ error: true });
 			});
-	}
+	};
 
 	render() {
 		let displayEvents = this.state.events.map(event => {
@@ -61,15 +63,33 @@ class HomePage extends React.Component {
 								<Card body>
 									<CardTitle className="card_title">Date & Route:</CardTitle>
 									<CardText className="card_text">{`${displayDate} - ${route} Route`}</CardText>
-									<Button className="card_button">Select</Button>
+									<Button
+										onClick={this.getEventByID(id)}
+										className="card_button"
+									>
+										Select
+									</Button>
 								</Card>
 							</Col>
 						</Row>
-						{/*button onClick={this.getEventByID(id)}>Select</button>*/}
 					</li>
 				</div>
 			);
 		});
+
+		// let displaySelectEvent = Object.entries(this.state.eventDetails).map(
+		// 	entry => {
+		// 		const [key, value] = entry;
+
+		// 		return (
+		// 			<div>
+		// 				<li key={key}>
+		// 					{key}: {value}
+		// 				</li>
+		// 			</div>
+		// 		);
+		// 	}
+		// );
 
 		return (
 			<div>
@@ -91,6 +111,7 @@ class HomePage extends React.Component {
 				</Button>{" "}
 				<hr />
 				{this.state.eventsLoaded && displayEvents}
+				{/* {this.state.selectedEvent && displaySelectEvent} */}
 			</div>
 		);
 	}
