@@ -5,7 +5,7 @@ import "./about-page.css";
 const About = () => {
 	return (
 		<div>
-			<h1>About us</h1>
+			<h1>About Us</h1>
 			<hr />
 			<h5>
 				We are a community of volunteers that go out to neighborhoods of
@@ -17,6 +17,7 @@ const About = () => {
 				the season, with two different central routes in Barcelona.{" "}
 			</h6>
 			<h6>To get involved, please sign up through our Home Page.</h6>
+			<hr />
 		</div>
 	);
 };

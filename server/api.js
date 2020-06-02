@@ -35,7 +35,7 @@ router.post("/events", async (req, res) => {
 
 // GET EVENTS (DATE & ROUTE ONLY)
 router.get("/events", (req, res) => {
-	db("SELECT * FROM events;")
+	db("SELECT * FROM events ORDER BY date ASC;")
 		.then(results => {
 			if (results.error) {
 				res.status(400).send({ message: "Error" });

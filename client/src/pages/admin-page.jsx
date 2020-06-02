@@ -6,10 +6,14 @@ import "./admin-page.css";
 const Admin = () => {
 	return (
 		<div>
-			<h1>Welcome Admin</h1>
+			<h1>Admin Page</h1>
 			<hr />
+			<h5>Welcome Admin</h5>
 			<br></br>
-			<Button color="success">Click here to add new event:</Button>
+			<Button className="admin_button" color="success">
+				Click here to add new event:
+			</Button>
+			<hr />
 		</div>
 	);
 };
