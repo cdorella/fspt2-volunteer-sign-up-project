@@ -29,22 +29,43 @@
 }
 
 .main-header {
-	color: white;
-	background-color: darkgreen;
 	padding: 1em;
 	position: relative;
 	width: 100%;
+	font-family: "Lato", sans-serif;
 }
 
 .main-footer {
 	color: white;
-	background-color: darkgreen;
 	padding: 1em;
 	position: absolute;
 	width: 100%;
 	bottom: 0;
+	font-family: "Lato", sans-serif;
 }
 
 .link {
 	color: white;
+}
+
+h1 {
+	font-family: "Manrope", sans-serif;
+	font-weight: bold;
+}
+
+h5 {
+	font-family: "Manrope", sans-serif;
+	font-weight: bold;
+}
+
+h6 {
+	font-family: "Manrope", sans-serif;
+}
+
+button {
+	font-family: "Lato", sans-serif;
+}
+
+p {
+	font-family: "Lato", sans-serif;
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import { Button } from "reactstrap";
 import "./home-page.css";
 
 class HomePage extends React.Component {
@@ -51,8 +52,18 @@ class HomePage extends React.Component {
 
 		return (
 			<div>
-				<h1>ESPERANÇA PROJECT</h1>
-				<button onClick={this.getEvents}>Click here for future events:</button>
+				<h1>
+					Esperança Project{" "}
+					<span role="img" aria-label="four leaf clover">
+						🍀
+					</span>
+				</h1>
+				<hr />
+				<h5>Welcome to our sign up page</h5>
+				<br></br>
+				<Button onClick={this.getEvents} color="success">
+					Click here for future dates:
+				</Button>{" "}
 				{displayEvents}
 			</div>
 		);

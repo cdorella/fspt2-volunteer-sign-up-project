@@ -25,7 +25,7 @@ class App extends React.Component {
 				<div className="page-container">
 					<div className="content-wrap">
 						<BrowserRouter>
-							<div className="main-header">
+							<div className="main-header p-3 mb-2 bg-success text-white">
 								<div className="clearfix">
 									<div className="float-left">
 										<NavLink className="link" to="/">
@@ -53,7 +53,7 @@ class App extends React.Component {
 							</Switch>
 
 							<div className="clearfix">
-								<div className="main-footer">
+								<div className="main-footer bg-success">
 									<div className="float-left">
 										<NavLink className="link" to="/admin">
 											<h6>Admin Access</h6>
