@@ -1,0 +1,27 @@
+li {
+	list-style-type: none;
+}
+
+.row {
+	display: flex;
+	justify-content: center;
+}
+
+.card_title {
+	font-family: "Manrope", sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.card_subtitle {
+	font-family: "Manrope", sans-serif;
+	font-weight: bold;
+}
+
+.card_text {
+	font-family: "Lato", sans-serif;
+}
+
+.card_button {
+	font-family: "Lato", sans-serif;
+}

@@ -29,7 +29,7 @@ li {
 	justify-content: center;
 }
 
-.card_title {
+.card_title_home {
 	font-family: "Manrope", sans-serif;
 	font-weight: bold;
 }
@@ -41,3 +41,11 @@ li {
 .card_button {
 	font-family: "Lato", sans-serif;
 }
+
+/* MAYBE FULL CONTAINER?  TBC */
+/* img {
+	padding: 18px;
+	width: 320px;
+	height: 225px;
+	margin: 10px;
+} */

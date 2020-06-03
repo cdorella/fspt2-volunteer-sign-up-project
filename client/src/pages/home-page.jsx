@@ -2,6 +2,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Card, CardText, CardTitle, Button, Row, Col } from "reactstrap";
 import "./home-page.css";
+import EventDetails from "../components/selected-event";
+//import RegistrationForm from "../components/registration-form";
 
 class HomePage extends React.Component {
 	constructor(props) {
@@ -10,7 +12,7 @@ class HomePage extends React.Component {
 			error: false,
 			eventsLoaded: false,
 			events: [],
-			// selectedEvent: false,
+			selectedEvent: false,
 			eventDetails: {},
 		};
 	}
@@ -22,6 +24,7 @@ class HomePage extends React.Component {
 				this.setState({
 					events: response,
 					eventsLoaded: true,
+					selectedEvent: false,
 				});
 			})
 			.catch(() => {
@@ -37,7 +40,7 @@ class HomePage extends React.Component {
 				this.setState({
 					eventDetails: response,
 					eventsLoaded: false,
-					// selectedEvent: true,
+					selectedEvent: true,
 				});
 			})
 			.catch(() => {
@@ -46,7 +49,9 @@ class HomePage extends React.Component {
 	};
 
 	render() {
-		let displayEvents = this.state.events.map(event => {
+		const { events, eventsLoaded, selectedEvent, eventDetails } = this.state;
+
+		let displayEvents = events.map(event => {
 			const { id, date, route } = event;
 			let displayDate = date;
 			displayDate = displayDate
@@ -61,7 +66,9 @@ class HomePage extends React.Component {
 						<Row className="row">
 							<Col sm="3">
 								<Card body>
-									<CardTitle className="card_title">Date & Route:</CardTitle>
+									<CardTitle className="card_title_home">
+										Date & Route:
+									</CardTitle>
 									<CardText className="card_text">{`${displayDate} - ${route} Route`}</CardText>
 									<Button
 										onClick={this.getEventByID(id)}
@@ -77,20 +84,6 @@ class HomePage extends React.Component {
 			);
 		});
 
-		// let displaySelectEvent = Object.entries(this.state.eventDetails).map(
-		// 	entry => {
-		// 		const [key, value] = entry;
-
-		// 		return (
-		// 			<div>
-		// 				<li key={key}>
-		// 					{key}: {value}
-		// 				</li>
-		// 			</div>
-		// 		);
-		// 	}
-		// );
-
 		return (
 			<div>
 				<h1>
@@ -100,18 +93,31 @@ class HomePage extends React.Component {
 					</span>
 				</h1>
 				<hr />
-				<h5>Welcome to our sign up page</h5>
-				<br></br>
-				<Button
-					onClick={this.getEvents}
-					className="home_button"
-					color="success"
-				>
-					Click here for future dates:
-				</Button>{" "}
+				{eventsLoaded ? (
+					<h5>Next events:</h5>
+				) : (
+					<div>
+						<h5>Welcome to our sign up page!</h5>
+						<div>
+							<Button
+								onClick={this.getEvents}
+								className="home_button"
+								color="success"
+							>
+								Click here for future dates:
+							</Button>
+							{/* <img
+							id="image"
+							src=TBC
+							alt="proper description"
+						/> */}
+						</div>
+					</div>
+				)}
 				<hr />
-				{this.state.eventsLoaded && displayEvents}
-				{/* {this.state.selectedEvent && displaySelectEvent} */}
+				{eventsLoaded && displayEvents}
+				{selectedEvent && <EventDetails {...eventDetails} />}
+				{/* {<RegistrationForm />} */}
 			</div>
 		);
 	}
