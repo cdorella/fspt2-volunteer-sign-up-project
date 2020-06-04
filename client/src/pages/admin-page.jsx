@@ -1,6 +1,15 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import {
+	Alert,
+	Col,
+	Row,
+	Button,
+	Form,
+	FormGroup,
+	Label,
+	Input,
+} from "reactstrap";
 import "./admin-page.css";
 
 class Admin extends React.Component {
@@ -9,6 +18,7 @@ class Admin extends React.Component {
 		this.state = {
 			error: false,
 			formLoaded: false,
+			formSubmitted: false,
 			date: "",
 			route: "",
 			task_name: "",
@@ -30,12 +40,15 @@ class Admin extends React.Component {
 		});
 	};
 
-	handleSubmit(event) {
+	handleSubmit = event => {
 		event.preventDefault();
+		this.setState({
+			formSubmitted: true,
+		});
 		this.addEvent();
-	}
+	};
 
-	addEvent = () => () => {
+	addEvent = () => {
 		const {
 			date,
 			route,
@@ -65,12 +78,14 @@ class Admin extends React.Component {
 	render() {
 		const {
 			formLoaded,
+			formSubmitted,
 			date,
 			route,
 			task_name,
 			task_description,
 			spots_available,
 		} = this.state;
+
 		return (
 			<div>
 				<h1>Admin Page</h1>
@@ -91,7 +106,7 @@ class Admin extends React.Component {
 				)}
 				<hr />
 				{formLoaded && (
-					<Form>
+					<Form onSubmit={this.handleSubmit}>
 						<Row form className="row">
 							<Col md={2}>
 								<FormGroup>
@@ -152,8 +167,19 @@ class Admin extends React.Component {
 							</Col>
 						</Row>
 						<br></br>
-						<Button onSubmit={this.handleSubmit}>Submit</Button>
+						<Button>Submit</Button>
 					</Form>
+				)}
+				{formSubmitted && (
+					<Alert color="dark">
+						All set!
+						<p>
+							{" "}
+							<a href="/" className="alert-link">
+								Back to Home Page
+							</a>
+						</p>
+					</Alert>
 				)}
 			</div>
 		);
@@ -161,18 +187,3 @@ class Admin extends React.Component {
 }
 
 export default Admin;
-
-// const Admin = () => {
-// 	return (
-// 		<div>
-// 			<h1>Admin Page</h1>
-// 			<hr />
-// 			<h5>Welcome Admin</h5>
-// 			<br></br>
-// 			<Button className="admin_button" color="success">
-// 				Click here to add new event:
-// 			</Button>
-// 			<hr />
-// 		</div>
-// 	);
-// };

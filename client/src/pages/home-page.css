@@ -1,11 +1,9 @@
-h1 {
-	font-family: "Manrope", sans-serif;
-	font-weight: bold;
-}
-
+h1,
+h4,
 h5 {
 	font-family: "Manrope", sans-serif;
 	font-weight: bold;
+	color: black;
 }
 
 h6 {
@@ -41,11 +39,3 @@ li {
 .card_button {
 	font-family: "Lato", sans-serif;
 }
-
-/* MAYBE FULL CONTAINER?  TBC */
-/* img {
-	padding: 18px;
-	width: 320px;
-	height: 225px;
-	margin: 10px;
-} */

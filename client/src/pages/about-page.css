@@ -11,3 +11,9 @@ h6 {
 p {
 	font-family: "Lato", sans-serif;
 }
+
+.homepage-link {
+	font-weight: bold;
+	color: black;
+	text-decoration: underline;
+}

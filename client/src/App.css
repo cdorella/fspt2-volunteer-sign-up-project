@@ -1,5 +1,10 @@
 .App {
 	text-align: center;
+	min-height: 400px;
+	/* margin-bottom: 100px; */
+	clear: both;
+	overflow: auto;
+	/* overflow: check if auto or not  */
 }
 
 .App-header {
@@ -13,10 +18,6 @@
 	color: white;
 }
 
-.active-item {
-	color: red;
-}
-
 .page-container {
 	display: flex;
 	flex-direction: column;
@@ -26,6 +27,15 @@
 
 .content-wrap {
 	flex: 1;
+	background-image: url("https://cdn.stocksnap.io/img-thumbs/960w/sparklers-fireworks_ELV1EZNKLR.jpg");
+
+	/* Full height */
+	height: 100%;
+
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .main-header {
@@ -43,6 +53,24 @@
 	bottom: 0;
 	font-family: "Lato", sans-serif;
 }
+
+.footer {
+	height: 24px;
+	width: 100%;
+	background-image: none;
+	background-repeat: repeat;
+	background-attachment: scroll;
+	background-position: 0% 0%;
+	position: fixed;
+	bottom: 0pt;
+	left: 0pt;
+}
+
+/* .footer_contents {
+	height: 24px;
+	width: 1000px;
+	margin: auto;
+} */
 
 .link {
 	color: white;

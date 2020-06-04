@@ -1,0 +1,11 @@
+.about-container {
+	display: flex;
+	justify-content: center;
+}
+
+.image-container {
+	padding: 26px;
+	width: 380px;
+	height: 280px;
+	margin: 16px;
+}

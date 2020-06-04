@@ -1,6 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import "./registration-form.css";
+import { Col, Row, Form, FormGroup, Label, Input } from "reactstrap";
+import ConfirmationPopUp from "./confirmation-popup";
 
 class RegistrationForm extends React.Component {
 	constructor(props) {
@@ -23,87 +25,113 @@ class RegistrationForm extends React.Component {
 		});
 	};
 
-	handleSubmit(event) {
+	handleSubmit = async event => {
 		event.preventDefault();
-		this.registerUser();
-	}
+		const userInfo = await this.registerUser();
+		this.saveUserToTask(userInfo.volunteer_id);
+	};
 
-	registerUser = () => () => {
-		const { first_name, last_name, email, phone_number } = this.state;
-
-		fetch("/api/registration", {
+	// POSTING NO LONGER WORKING :(
+	registerUser = async () => {
+		const request = await fetch("api/registration", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				first_name: first_name,
-				last_name: last_name,
-				email: email,
-				phone_number: phone_number,
+				first_name: this.state.first_name,
+				last_name: this.state.last_name,
+				email: this.state.email,
+				phone_number: this.state.phone_number,
 			}),
 		})
 			.then(response => response.json())
-			.then(response => console.log(response))
 			.catch(err => console.log(err));
+
+		return request;
 	};
+
+	// NOT SURE IF THIS IS CORRECT ?
+	// saveUserToTask = volunteer_id => {
+	// 	fetch("api/registration", {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 		},
+	// 		body: JSON.stringify({
+	// 			// selected_task_id: this.props.id, CHECK ON THIS
+	// 			volunteer_id: volunteer_id,
+	// 		}),
+	// 	})
+	// 		.then(response => response.json())
+	// 		.catch(err => console.log(err));
+	// };
 
 	render() {
 		return (
-			<Form>
-				<h5>Please add your details:</h5>
-				<Row form className="row">
-					<Col md={4}>
-						<FormGroup>
-							<Label for="first_name">First Name:</Label>
-							<Input
-								type="text"
-								name="first_name"
-								value={this.state.first_name}
-								onChange={this.handleInputChange}
-							/>
-						</FormGroup>
-					</Col>
-					<Col md={4}>
-						<FormGroup>
-							<Label for="last_name">Last Name:</Label>
-							<Input
-								type="text"
-								name="last_name"
-								value={this.state.last_name}
-								onChange={this.handleInputChange}
-							/>
-						</FormGroup>
-					</Col>
-				</Row>
-				<Row form className="row">
-					<Col md={4}>
-						<FormGroup>
-							<Label for="email">Email Address:</Label>
-							<Input
-								type="text"
-								name="email"
-								value={this.state.email}
-								onChange={this.handleInputChange}
-							/>
-						</FormGroup>
-					</Col>
-					<Col md={4}>
-						<FormGroup>
-							<Label for="phone_number">
-								Phone Number: (Only numbers please)
-							</Label>
-							<Input
-								type="text"
-								name="phone_number"
-								value={this.state.phone_number}
-								onChange={this.handleInputChange}
-							/>
-						</FormGroup>
-					</Col>
-				</Row>
-				<Button onSubmit={() => this.handleSubmit}>Submit</Button>
-			</Form>
+			<div>
+				<Form onSubmit={this.handleSubmit}>
+					<h5>Please add your details below:</h5>
+					<Row form className="row">
+						<Col md={4}>
+							<FormGroup>
+								<Label for="first_name">First Name:</Label>
+								<Input
+									type="text"
+									name="first_name"
+									value={this.state.first_name}
+									onChange={this.handleInputChange}
+								/>
+							</FormGroup>
+						</Col>
+						<Col md={4}>
+							<FormGroup>
+								<Label for="last_name">Last Name:</Label>
+								<Input
+									type="text"
+									name="last_name"
+									value={this.state.last_name}
+									onChange={this.handleInputChange}
+								/>
+							</FormGroup>
+						</Col>
+					</Row>
+					<Row form className="row">
+						<Col md={4}>
+							<FormGroup>
+								<Label for="email">Email Address:</Label>
+								<Input
+									type="text"
+									name="email"
+									value={this.state.email}
+									onChange={this.handleInputChange}
+								/>
+							</FormGroup>
+						</Col>
+						<Col md={4}>
+							<FormGroup>
+								<Label for="phone_number">
+									Phone Number: (Only numbers please)
+								</Label>
+								<Input
+									type="text"
+									name="phone_number"
+									value={this.state.phone_number}
+									onChange={this.handleInputChange}
+								/>
+							</FormGroup>
+						</Col>
+					</Row>
+					{
+						<ConfirmationPopUp
+							id={this.props.id}
+							saveUser={this.saveUserToTask}
+						>
+							Submit
+						</ConfirmationPopUp>
+					}
+				</Form>
+			</div>
 		);
 	}
 }

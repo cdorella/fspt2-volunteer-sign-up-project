@@ -1,9 +1,8 @@
 import React from "react";
+import "./home-page.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Card, CardText, CardTitle, Button, Row, Col } from "reactstrap";
-import "./home-page.css";
-import EventDetails from "../components/selected-event";
-//import RegistrationForm from "../components/registration-form";
+import EventDetails from "../components/event-details";
 
 class HomePage extends React.Component {
 	constructor(props) {
@@ -36,7 +35,6 @@ class HomePage extends React.Component {
 		fetch(`/api/events/${eventId}`)
 			.then(response => response.json())
 			.then(response => {
-				//console.log(response);
 				this.setState({
 					eventDetails: response,
 					eventsLoaded: false,
@@ -94,7 +92,9 @@ class HomePage extends React.Component {
 				</h1>
 				<hr />
 				{eventsLoaded ? (
-					<h5>Next events:</h5>
+					<div>
+						<h4>Next events:</h4>
+					</div>
 				) : (
 					<div>
 						<h5>Welcome to our sign up page!</h5>
@@ -106,18 +106,12 @@ class HomePage extends React.Component {
 							>
 								Click here for future dates:
 							</Button>
-							{/* <img
-							id="image"
-							src=TBC
-							alt="proper description"
-						/> */}
 						</div>
 					</div>
 				)}
 				<hr />
 				{eventsLoaded && displayEvents}
 				{selectedEvent && <EventDetails {...eventDetails} />}
-				{/* {<RegistrationForm />} */}
 			</div>
 		);
 	}

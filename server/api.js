@@ -51,7 +51,7 @@ router.get("/events/:id", async (req, res) => {
 		const { id } = req.params;
 		const eventData = await db(`SELECT * FROM events where id=${id};`);
 		const tasks = await db(
-			`SELECT tasks.id, tasks.task_name, tasks.task_description, event_tasks.spots_available FROM event_tasks INNER JOIN tasks ON event_tasks.task_id = tasks.id WHERE event_tasks.event_id = ${id}`
+			`SELECT event_tasks.id, tasks.task_name, tasks.task_description, event_tasks.spots_available FROM event_tasks INNER JOIN tasks ON event_tasks.task_id = tasks.id WHERE event_tasks.event_id = ${id}`
 		);
 
 		res.send({
@@ -65,24 +65,17 @@ router.get("/events/:id", async (req, res) => {
 	}
 });
 
-/* Another option if needed, that only displays the tasks (no date or route)
-  const eventData = event[0];
-  res.send({
-    ...eventData,
-    tasks: tasks.data,
-  });
-});
-*/
-
 // ADD VOLUNTEER
 router.post("/registration", (req, res) => {
 	const { first_name, last_name, email, phone_number } = req.body;
 	db(
-		`INSERT INTO volunteers (first_name, last_name, email, phone_number) VALUES ('${first_name}','${last_name}','${email}', '${phone_number}');`
+		`INSERT INTO volunteers (first_name, last_name, email, phone_number) VALUES ('${first_name}','${last_name}','${email}', '${phone_number}');
+		SELECT LAST_INSERT_ID();`
 	)
 		.then(results => {
+			console.log(results.data[0].insertId);
 			if (!results.error) {
-				res.status(201).send({});
+				res.status(201).send({ volunteer_id: results.data[0].insertId });
 			}
 		})
 		.catch(err => res.status(500).send(err));

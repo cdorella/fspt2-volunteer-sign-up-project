@@ -25,3 +25,9 @@ li {
 .card_button {
 	font-family: "Lato", sans-serif;
 }
+
+.small-title {
+	font-family: "Manrope", sans-serif;
+	font-weight: bold;
+	color: black;
+}

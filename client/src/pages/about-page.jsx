@@ -12,11 +12,17 @@ const About = () => {
 				Barcelona to hand out food and talk to people living on the streets.
 			</h5>
 			<br></br>
-			<h6>
+			<h5 className="small-title">
 				We go out every Saturday and Sunday evening between 6-8pm depending on
 				the season, with two different central routes in Barcelona.{" "}
-			</h6>
-			<h6>To get involved, please sign up through our Home Page.</h6>
+			</h5>
+			<h5 className="small-title">
+				To get involved, please sign up through our{" "}
+				<a href="/" className="homepage-link">
+					Home Page
+				</a>
+				.
+			</h5>
 			<hr />
 		</div>
 	);
