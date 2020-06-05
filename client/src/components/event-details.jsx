@@ -16,30 +16,34 @@ class EventDetails extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedTask: false,
 			selectedDate: "",
 			selectedRoute: "",
+			selectedSpotsAvailable: 0,
+			selectedTask: false,
 			selectedTaskId: 0,
 			selectedTaskName: "",
 		};
 	}
 
-	getRegistrationForm = (id, name, date, route) => {
+	getRegistrationForm = (date, route, spots, id, name) => {
+		const newSpots = spots - 1;
 		this.setState({
-			selectedTask: true,
-			selectedRoute: route,
 			selectedDate: date,
+			selectedRoute: route,
+			selectedSpotsAvailable: newSpots,
+			selectedTask: true,
 			selectedTaskId: id,
 			selectedTaskName: name,
 		});
 	};
 
 	render() {
-		const { date, route, tasks } = this.props;
+		const { date, route, spots, tasks } = this.props;
 		const {
-			selectedTask,
 			selectedDate,
 			selectedRoute,
+			selectedSpotsAvailable,
+			selectedTask,
 			selectedTaskId,
 			selectedTaskName,
 		} = this.state;
@@ -53,10 +57,11 @@ class EventDetails extends React.Component {
 			<div>
 				{selectedTask ? (
 					<RegistrationForm
-						id={selectedTaskId}
-						name={selectedTaskName}
 						date={selectedDate}
 						route={selectedRoute}
+						spots={selectedSpotsAvailable}
+						id={selectedTaskId}
+						name={selectedTaskName}
 					/>
 				) : (
 					<div>
@@ -80,10 +85,11 @@ class EventDetails extends React.Component {
 													className="card_button"
 													onClick={() =>
 														this.getRegistrationForm(
-															task.id,
-															task.task_name,
 															displayDate,
-															route
+															route,
+															task.spots_available,
+															task.id,
+															task.task_name
 														)
 													}
 												>

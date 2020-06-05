@@ -10,7 +10,9 @@ const ConfirmationPopUp = props => {
 
 	const handleConfirmation = () => {
 		toggle();
-		props.saveUserToTask();
+		props.handleFinalConfirmation();
+		// props.registerUser();
+		// props.saveUserToTask();
 	};
 
 	const handleCancellation = () => {

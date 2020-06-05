@@ -25,13 +25,19 @@ class RegistrationForm extends React.Component {
 		});
 	};
 
-	handleSubmit = async event => {
+	handleSubmit = event => {
 		event.preventDefault();
-		const userInfo = await this.registerUser();
-		this.saveUserToTask(userInfo.volunteer_id);
+		// const userInfo = await this.registerUser();
+		// this.saveUserToTask(userInfo.volunteer_id);
 	};
 
-	// POSTING NO LONGER WORKING :(
+	handleFinalConfirmation = async () => {
+		const id = this.props.id;
+		const userInfo = await this.registerUser();
+		this.saveUserToTask(userInfo.volunteer_id);
+		this.adjustSpots(id);
+	};
+
 	registerUser = async () => {
 		const request = await fetch("api/registration", {
 			method: "POST",
@@ -52,7 +58,7 @@ class RegistrationForm extends React.Component {
 	};
 
 	saveUserToTask = volunteer_id => {
-		fetch("api/registration", {
+		fetch("api/events/attend", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -60,6 +66,20 @@ class RegistrationForm extends React.Component {
 			body: JSON.stringify({
 				selected_task_id: this.props.id,
 				volunteer_id: volunteer_id,
+			}),
+		})
+			.then(response => response.json())
+			.catch(err => console.log(err));
+	};
+
+	adjustSpots = id => {
+		fetch(`api/events/${id}`, {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				spots_available: this.props.spots,
 			}),
 		})
 			.then(response => response.json())
@@ -128,7 +148,9 @@ class RegistrationForm extends React.Component {
 							name={name}
 							date={date}
 							route={route}
-							saveUserToTask={this.saveUserToTask}
+							handleFinalConfirmation={this.handleFinalConfirmation}
+							// registerUser={this.registerUser}
+							// saveUserToTask={this.saveUserToTask}
 						>
 							Submit
 						</ConfirmationPopUp>

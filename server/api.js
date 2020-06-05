@@ -82,7 +82,7 @@ router.post("/registration", (req, res) => {
 });
 
 // MATCH VOLUNTEER TO SELECTED TASK
-router.post("/events/:id/attend", (req, res) => {
+router.post("/events/attend", (req, res) => {
 	const { selected_task_id, volunteer_id } = req.body;
 	db(
 		`INSERT INTO tasks_volunteers (selected_task_id, volunteer_id) VALUES ('${selected_task_id}','${volunteer_id}');`
