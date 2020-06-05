@@ -15,7 +15,7 @@
 	align-items: center;
 	justify-content: center;
 	font-size: calc(10px + 2vmin);
-	color: white;
+	color: #d5f6b8;
 }
 
 .page-container {
@@ -43,15 +43,17 @@
 	position: relative;
 	width: 100%;
 	font-family: "Lato", sans-serif;
+	background-color: #f5fffa;
 }
 
 .main-footer {
-	color: white;
+	color: black;
 	padding: 1em;
 	position: absolute;
 	width: 100%;
 	bottom: 0;
 	font-family: "Lato", sans-serif;
+	background-color: #f5fffa;
 }
 
 .footer {
@@ -73,7 +75,9 @@
 } */
 
 .link {
-	color: white;
+	font-family: "Lato", sans-serif;
+	font-weight: bold;
+	color: black;
 }
 
 h1 {

@@ -130,7 +130,7 @@ router.get("/events/:id/volunteers", async (req, res) => {
 		const { id } = req.params;
 		const eventData = await db(`SELECT * FROM events where id=${id};`);
 		const volunteers = await db(
-			`SELECT tasks.task_name, volunteers.first_name, volunteers.last_name, volunteers.email, volunteers.phone_number FROM tasks_volunteers INNER JOIN volunteers ON volunteers.id = tasks_volunteers.volunteer_id INNER JOIN event_tasks ON event_tasks.id = tasks_volunteers.selected_task_id INNER JOIN events ON events.id = event_tasks.event_id INNER JOIN tasks ON tasks.id = event_tasks.task_id WHERE events.id = '${id}';`
+			`SELECT tasks.task_name, volunteers.id, volunteers.first_name, volunteers.last_name, volunteers.email, volunteers.phone_number FROM tasks_volunteers INNER JOIN volunteers ON volunteers.id = tasks_volunteers.volunteer_id INNER JOIN event_tasks ON event_tasks.id = tasks_volunteers.selected_task_id INNER JOIN events ON events.id = event_tasks.event_id INNER JOIN tasks ON tasks.id = event_tasks.task_id WHERE events.id = '${id}';`
 		);
 
 		res.send({

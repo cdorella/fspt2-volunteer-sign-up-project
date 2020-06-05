@@ -26,7 +26,7 @@ class App extends React.Component {
 				<div className="page-container">
 					<div className="content-wrap">
 						<BrowserRouter>
-							<div className="main-header p-3 mb-2 bg-success text-white">
+							<div className="main-header p-3 mb-2">
 								<div className="clearfix">
 									<div className="float-left">
 										<NavLink className="link" to="/">
@@ -49,13 +49,13 @@ class App extends React.Component {
 									<Admin />
 								</Route>
 								<Route path="/about" component={About}>
-									<About />
 									<ImageContainer />
+									<About />
 								</Route>
 							</Switch>
 
 							<div className="footer">
-								<div className="main-footer bg-success">
+								<div className="main-footer">
 									<div className="float-left">
 										<NavLink className="link" to="/admin">
 											<h6>Admin Access</h6>
@@ -64,7 +64,7 @@ class App extends React.Component {
 									<div className="float-right">
 										<h6>
 											{" "}
-											Made in Barcelona with 🤍 &copy;{new Date().getFullYear()}
+											Made in Barcelona with 🖤 &copy;{new Date().getFullYear()}
 										</h6>
 									</div>
 								</div>

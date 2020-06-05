@@ -17,3 +17,11 @@ p {
 	color: black;
 	text-decoration: underline;
 }
+
+.about-text {
+	color: #f5fffa;
+}
+
+.about-email {
+	font-weight: bold;
+}

@@ -3,9 +3,10 @@ h1 {
 	font-weight: bold;
 }
 
-h5 {
+.h5-admin-page {
 	font-family: "Manrope", sans-serif;
 	font-weight: bold;
+	color: #f5fffa;
 }
 
 h6 {
@@ -20,6 +21,20 @@ p {
 	font-family: "Lato", sans-serif;
 }
 
+.alert-message {
+	font-family: "Lato", sans-serif;
+	font-size: bold;
+}
+
 .alert-link {
 	font-family: "Lato", sans-serif;
+}
+
+.admin-buttons {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.back-to-home-link {
+	color: white;
 }

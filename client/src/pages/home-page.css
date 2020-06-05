@@ -1,9 +1,14 @@
-h1,
-h4,
-h5 {
+h1 {
 	font-family: "Manrope", sans-serif;
 	font-weight: bold;
-	color: black;
+	color: #f5fffa;
+}
+
+h4,
+.h5-homepage {
+	font-family: "Manrope", sans-serif;
+	font-weight: bold;
+	color: #f5fffa;
 }
 
 h6 {

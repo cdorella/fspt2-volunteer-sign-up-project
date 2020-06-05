@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./registration-form.css";
-import { Col, Row, Form, FormGroup, Label, Input } from "reactstrap";
+import { Alert, Col, Row, Form, FormGroup, Label, Input } from "reactstrap";
 import ConfirmationPopUp from "./confirmation-popup";
 
 class RegistrationForm extends React.Component {
@@ -13,6 +13,7 @@ class RegistrationForm extends React.Component {
 			last_name: "",
 			email: "",
 			phone_number: "",
+			userConfirmed: false,
 		};
 	}
 
@@ -27,8 +28,6 @@ class RegistrationForm extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
-		// const userInfo = await this.registerUser();
-		// this.saveUserToTask(userInfo.volunteer_id);
 	};
 
 	handleFinalConfirmation = async () => {
@@ -36,6 +35,13 @@ class RegistrationForm extends React.Component {
 		const userInfo = await this.registerUser();
 		this.saveUserToTask(userInfo.volunteer_id);
 		this.adjustSpots(id);
+		this.setState({
+			userConfirmed: true,
+			first_name: "",
+			last_name: "",
+			email: "",
+			phone_number: "",
+		});
 	};
 
 	registerUser = async () => {
@@ -88,6 +94,7 @@ class RegistrationForm extends React.Component {
 
 	render() {
 		const { id, name, date, route } = this.props;
+		const { userConfirmed } = this.state;
 		return (
 			<div>
 				<Form onSubmit={this.handleSubmit}>
@@ -149,13 +156,25 @@ class RegistrationForm extends React.Component {
 							date={date}
 							route={route}
 							handleFinalConfirmation={this.handleFinalConfirmation}
-							// registerUser={this.registerUser}
-							// saveUserToTask={this.saveUserToTask}
 						>
 							Submit
 						</ConfirmationPopUp>
 					}
 				</Form>
+
+				{userConfirmed && (
+					<Alert color="dark">
+						Thank you! A confirmation email has been sent to you. If you need to
+						cancel your participation, please let us know in advance by email:
+						esperanca_barcelona@esperanca.com
+						<p>
+							{" "}
+							<a href="/" className="alert-link">
+								Back to Home Page
+							</a>
+						</p>
+					</Alert>
+				)}
 			</div>
 		);
 	}

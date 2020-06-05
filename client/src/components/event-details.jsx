@@ -38,7 +38,7 @@ class EventDetails extends React.Component {
 	};
 
 	render() {
-		const { date, route, spots, tasks } = this.props;
+		const { date, route, tasks } = this.props;
 		const {
 			selectedDate,
 			selectedRoute,
@@ -47,6 +47,7 @@ class EventDetails extends React.Component {
 			selectedTaskId,
 			selectedTaskName,
 		} = this.state;
+
 		let displayDate = date;
 		displayDate = displayDate
 			.split("-")
@@ -65,7 +66,7 @@ class EventDetails extends React.Component {
 					/>
 				) : (
 					<div>
-						<h6 className="small-title">Please select a task:</h6>
+						<h5 className="small-title">Please select a task:</h5>
 						<li>
 							<Row className="row">
 								<Col sm="4">
@@ -77,9 +78,12 @@ class EventDetails extends React.Component {
 													<CardSubtitle className="text-center card_subtitle">
 														<li>{`${task.task_name}`}</li>
 													</CardSubtitle>
-
 													<li>{`${task.task_description}`}</li>
-													<li>{`Volunteers Needed: ${task.spots_available}`}</li>
+													<li>
+														{task.spots_available <= 0
+															? "No spots left"
+															: `Volunteers Needed: ${task.spots_available}`}
+													</li>
 												</div>
 												<Button
 													className="card_button"

@@ -97,14 +97,14 @@ class HomePage extends React.Component {
 					</div>
 				) : (
 					<div>
-						<h5>Welcome to our sign up page!</h5>
+						<h5 className="h5-homepage">Welcome to our sign up page!</h5>
 						<div>
 							<Button
 								onClick={this.getEvents}
 								className="home_button"
 								color="success"
 							>
-								Click here for future dates:
+								Click here for future dates
 							</Button>
 						</div>
 					</div>
