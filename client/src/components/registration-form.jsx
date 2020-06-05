@@ -51,23 +51,23 @@ class RegistrationForm extends React.Component {
 		return request;
 	};
 
-	// NOT SURE IF THIS IS CORRECT ?
-	// saveUserToTask = volunteer_id => {
-	// 	fetch("api/registration", {
-	// 		method: "POST",
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 		},
-	// 		body: JSON.stringify({
-	// 			// selected_task_id: this.props.id, CHECK ON THIS
-	// 			volunteer_id: volunteer_id,
-	// 		}),
-	// 	})
-	// 		.then(response => response.json())
-	// 		.catch(err => console.log(err));
-	// };
+	saveUserToTask = volunteer_id => {
+		fetch("api/registration", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				selected_task_id: this.props.id,
+				volunteer_id: volunteer_id,
+			}),
+		})
+			.then(response => response.json())
+			.catch(err => console.log(err));
+	};
 
 	render() {
+		const { id, name, date, route } = this.props;
 		return (
 			<div>
 				<Form onSubmit={this.handleSubmit}>
@@ -124,8 +124,11 @@ class RegistrationForm extends React.Component {
 					</Row>
 					{
 						<ConfirmationPopUp
-							id={this.props.id}
-							saveUser={this.saveUserToTask}
+							id={id}
+							name={name}
+							date={date}
+							route={route}
+							saveUserToTask={this.saveUserToTask}
 						>
 							Submit
 						</ConfirmationPopUp>

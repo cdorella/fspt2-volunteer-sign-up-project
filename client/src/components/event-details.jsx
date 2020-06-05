@@ -17,22 +17,32 @@ class EventDetails extends React.Component {
 		super(props);
 		this.state = {
 			selectedTask: false,
+			selectedDate: "",
+			selectedRoute: "",
 			selectedTaskId: 0,
-			// selectedTaskName: "",
+			selectedTaskName: "",
 		};
 	}
 
-	getRegistrationForm = task_id => {
+	getRegistrationForm = (id, name, date, route) => {
 		this.setState({
 			selectedTask: true,
-			selectedTaskId: task_id,
-			// selectedTaskName: task_name,
+			selectedRoute: route,
+			selectedDate: date,
+			selectedTaskId: id,
+			selectedTaskName: name,
 		});
 	};
 
 	render() {
 		const { date, route, tasks } = this.props;
-		const { selectedTask, selectedTaskId } = this.state;
+		const {
+			selectedTask,
+			selectedDate,
+			selectedRoute,
+			selectedTaskId,
+			selectedTaskName,
+		} = this.state;
 		let displayDate = date;
 		displayDate = displayDate
 			.split("-")
@@ -42,9 +52,13 @@ class EventDetails extends React.Component {
 		return (
 			<div>
 				{selectedTask ? (
-					<RegistrationForm id={selectedTaskId} />
+					<RegistrationForm
+						id={selectedTaskId}
+						name={selectedTaskName}
+						date={selectedDate}
+						route={selectedRoute}
+					/>
 				) : (
-					// <RegistrationForm id={selectedTaskId} task_name={selectedTaskName}/>
 					<div>
 						<h6 className="small-title">Please select a task:</h6>
 						<li>
@@ -65,10 +79,14 @@ class EventDetails extends React.Component {
 												<Button
 													className="card_button"
 													onClick={() =>
-														this.getRegistrationForm(task.id, task.task_name)
+														this.getRegistrationForm(
+															task.id,
+															task.task_name,
+															displayDate,
+															route
+														)
 													}
 												>
-													{/*onClick={this.getRegistrationForm(task.id, task.task_name)}  */}
 													Select
 												</Button>
 											</CardText>

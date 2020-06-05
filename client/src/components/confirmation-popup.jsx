@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 const ConfirmationPopUp = props => {
-	const { className, id } = props;
+	const { className, name, date, route } = props;
 
 	const [modal, setModal] = useState(false);
 
@@ -10,7 +10,7 @@ const ConfirmationPopUp = props => {
 
 	const handleConfirmation = () => {
 		toggle();
-		props.saveUser();
+		props.saveUserToTask();
 	};
 
 	const handleCancellation = () => {
@@ -26,7 +26,10 @@ const ConfirmationPopUp = props => {
 			<Modal isOpen={modal} toggle={toggle} className={className}>
 				<ModalHeader toggle={toggle}>Confirmation</ModalHeader>
 				<ModalBody>
-					You have selected task {id}. Do you wish to confirm?
+					You have selected the following task: <br></br>
+					<strong>{name}</strong> on <strong>{date}</strong> for{" "}
+					<strong>{route}</strong> Route. <br></br>
+					Do you wish to confirm?
 				</ModalBody>
 				<ModalFooter>
 					<Button color="primary" onClick={handleConfirmation}>
