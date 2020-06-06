@@ -106,7 +106,9 @@ class HomePage extends React.Component {
 				)}
 				<hr />
 				{eventsLoaded && displayEvents}
+				<br></br>
 				{selectedEvent && <EventDetails {...eventDetails} />}
+				<br></br>
 			</div>
 		);
 	}

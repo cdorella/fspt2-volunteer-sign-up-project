@@ -1,5 +1,15 @@
 # Volunteer Sign Up Project
 
+Welcome to my first MVP. This was done over the course of 2 weeks as a bootcamp project for CodeOp.
+
+The project is a volunteer sign up page inspired by "Esperança", a community of volunteers that go out to neighborhoods of Barcelona handing out food and talking to people living on the streets.
+
+In order to build this MVP I have used the following stack:
+ReactJs, JavaScript, HTML, CSS & Bootstrap for the front-end.
+NodeJs, Express & MySQL for the back-end.
+
+## Documentation
+
 ## User Flow Diagram
 
 ## Database schema
@@ -7,6 +17,36 @@
 ## API Routes Plan
 
 ## Full Stack Architecture Drawing
+
+## Setup
+
+### Dependencies
+
+Run `yarn` on root folder to install dependencies related to Express.
+
+`cd client` and run `yarn` install dependencies related to React.
+
+### Database Prep
+
+- Access the MySQL interface in your terminal by running `mysql -u root -p`
+- Create a new database called sign_up_project: `create database sign_up_project`
+- Add a `.env` file to the main folder of this repository containing the MySQL authentication information for MySQL user. For example:
+
+```bash
+  DB_HOST=localhost
+  DB_USER=root
+  DB_NAME=sign_up_project
+  DB_PASS=YOURPASSWORD
+```
+
+- Run `yarn migrate` in the main folder of this repository, in a new terminal window. This will create the 5 tables you need for this project in your database (events, tasks, volunteers, event_tasks, tasks_volunteers).
+
+### Run Your Development Servers
+
+- Run `yarn start` in project directory to start the Express server on port 5000
+- `cd client` and run `yarn start` to start client server in development mode with hot reloading in port 3000.
+- You can test your client app in `http://localhost:3000`
+- You can test your API in `http://localhost:5000/api`
 
 ## Notes
 

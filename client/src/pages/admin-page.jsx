@@ -254,11 +254,6 @@ class Admin extends React.Component {
 						<br></br>
 						<Button>Submit</Button>
 						<hr />
-						<Button>
-							<a href="/" className="back-to-home-link">
-								Home Page
-							</a>
-						</Button>
 						{eventsLoaded && (
 							<div>
 								<br></br>
@@ -271,7 +266,6 @@ class Admin extends React.Component {
 					</Form>
 				)}
 				{eventsLoaded && displayEvents}
-				<br></br>
 				{selectedEvent && <VolunteersList {...volunteers} />}
 				<br></br>
 			</div>

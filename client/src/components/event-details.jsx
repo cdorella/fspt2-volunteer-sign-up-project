@@ -80,25 +80,32 @@ class EventDetails extends React.Component {
 													</CardSubtitle>
 													<li>{`${task.task_description}`}</li>
 													<li>
-														{task.spots_available <= 0
-															? "No spots left"
-															: `Volunteers Needed: ${task.spots_available}`}
+														{task.spots_available <= 0 ? (
+															<div>
+																<strong>Sorry, no spots left</strong>
+															</div>
+														) : (
+															<div>
+																Volunteers Needed: {task.spots_available}
+																<br></br>
+																<Button
+																	className="card_button"
+																	onClick={() =>
+																		this.getRegistrationForm(
+																			displayDate,
+																			route,
+																			task.spots_available,
+																			task.id,
+																			task.task_name
+																		)
+																	}
+																>
+																	Select
+																</Button>
+															</div>
+														)}
 													</li>
 												</div>
-												<Button
-													className="card_button"
-													onClick={() =>
-														this.getRegistrationForm(
-															displayDate,
-															route,
-															task.spots_available,
-															task.id,
-															task.task_name
-														)
-													}
-												>
-													Select
-												</Button>
 											</CardText>
 										))}
 									</Card>
