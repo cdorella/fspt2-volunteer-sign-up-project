@@ -189,7 +189,17 @@ class Admin extends React.Component {
 					</div>
 				)}
 				<hr />
-				{formSubmitted && <Alert color="dark">Event added. Thank you!</Alert>}
+				{formSubmitted && (
+					<Alert color="dark">
+						Event added. Thank you!
+						<p>
+							{" "}
+							<a href="/" className="alert-link">
+								Back to Home Page
+							</a>
+						</p>
+					</Alert>
+				)}
 				{formLoaded && (
 					<Form onSubmit={this.handleSubmit}>
 						<Row form className="row">
