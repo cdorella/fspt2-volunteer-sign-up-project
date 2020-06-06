@@ -5,7 +5,9 @@ Welcome to my first MVP. This was done over the course of 2 weeks as a bootcamp 
 The project is a volunteer sign up page inspired by "Esperança", a community of volunteers that go out to neighborhoods of Barcelona handing out food and talking to people living on the streets.
 
 In order to build this MVP I have used the following stack:
+
 ReactJs, JavaScript, HTML, CSS & Bootstrap for the front-end.
+
 NodeJs, Express & MySQL for the back-end.
 
 ## Documentation
