@@ -1,7 +1,5 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import "./event-details.css";
-import RegistrationForm from "./registration-form";
 import {
 	Card,
 	CardText,
@@ -11,6 +9,8 @@ import {
 	Row,
 	Col,
 } from "reactstrap";
+
+import RegistrationForm from "./registration-form";
 
 class EventDetails extends React.Component {
 	constructor(props) {
@@ -66,7 +66,7 @@ class EventDetails extends React.Component {
 					/>
 				) : (
 					<div>
-						<h5 className="small-title">Please select a task:</h5>
+						<h5>Please select a task:</h5>
 						<li>
 							<Row className="row">
 								<Col sm="4">

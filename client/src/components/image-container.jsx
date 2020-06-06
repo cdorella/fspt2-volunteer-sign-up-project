@@ -1,6 +1,4 @@
 import React from "react";
-import "./image-container.css";
-import "bootstrap/dist/css/bootstrap.css";
 
 const ImageContainer = () => {
 	return (

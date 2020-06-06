@@ -1,4 +1,5 @@
 import React from "react";
+import "./admin-page.css";
 import "bootstrap/dist/css/bootstrap.css";
 import {
 	Alert,
@@ -13,7 +14,7 @@ import {
 	CardTitle,
 	CardText,
 } from "reactstrap";
-import "./admin-page.css";
+
 import VolunteersList from "../components/volunteers-list";
 
 class Admin extends React.Component {
@@ -145,12 +146,10 @@ class Admin extends React.Component {
 			return (
 				<div key={id}>
 					<li>
-						<Row className="row">
-							<Col sm="3">
+						<div className="content">
+							<Row sm="4" className="row">
 								<Card body>
-									<CardTitle className="card_title_home">
-										Date & Route:
-									</CardTitle>
+									<CardTitle className="card_title">Date & Route:</CardTitle>
 									<CardText className="card_text">{`${displayDate} - ${route} Route`}</CardText>
 									<Button
 										onClick={this.getEventVolunteersByID(id)}
@@ -159,8 +158,8 @@ class Admin extends React.Component {
 										Select
 									</Button>
 								</Card>
-							</Col>
-						</Row>
+							</Row>
+						</div>
 					</li>
 				</div>
 			);
@@ -171,10 +170,10 @@ class Admin extends React.Component {
 				<h1>Admin Page</h1>
 				<hr />
 				{formLoaded ? (
-					<h5 className="h5-admin-page">Please add information below:</h5>
+					<h5>Please add information below:</h5>
 				) : (
 					<div>
-						<h5 className="h5-admin-page">Welcome Admin!</h5>
+						<h5>Welcome Admin!</h5>
 						<div className="admin-buttons">
 							<Button
 								onClick={this.getForm}
@@ -183,11 +182,7 @@ class Admin extends React.Component {
 							>
 								Click here to add new event
 							</Button>
-							<Button
-								onClick={this.getEvents}
-								className="admin_button"
-								color="success"
-							>
+							<Button onClick={this.getEvents} color="success">
 								Click here for list of events & volunteers
 							</Button>
 						</div>
@@ -267,7 +262,7 @@ class Admin extends React.Component {
 						{eventsLoaded && (
 							<div>
 								<br></br>
-								<h5 className="h5-admin-page">
+								<h5>
 									For a list of volunteers already signed up, please select
 									event below:
 								</h5>
@@ -276,7 +271,9 @@ class Admin extends React.Component {
 					</Form>
 				)}
 				{eventsLoaded && displayEvents}
+				<br></br>
 				{selectedEvent && <VolunteersList {...volunteers} />}
+				<br></br>
 			</div>
 		);
 	}

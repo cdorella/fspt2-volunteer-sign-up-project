@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import "./registration-form.css";
 import { Alert, Col, Row, Form, FormGroup, Label, Input } from "reactstrap";
+
 import ConfirmationPopUp from "./confirmation-popup";
 
 class RegistrationForm extends React.Component {

@@ -1,7 +1,8 @@
 import React from "react";
 import "./home-page.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { Card, CardText, CardTitle, Button, Row, Col } from "reactstrap";
+import { Card, CardText, CardTitle, Button, Row } from "reactstrap";
+
 import EventDetails from "../components/event-details";
 
 class HomePage extends React.Component {
@@ -61,12 +62,10 @@ class HomePage extends React.Component {
 			return (
 				<div key={id}>
 					<li>
-						<Row className="row">
-							<Col sm="3">
+						<div className="content">
+							<Row sm="4" className="row">
 								<Card body>
-									<CardTitle className="card_title_home">
-										Date & Route:
-									</CardTitle>
+									<CardTitle className="card_title">Date & Route:</CardTitle>
 									<CardText className="card_text">{`${displayDate} - ${route} Route`}</CardText>
 									<Button
 										onClick={this.getEventByID(id)}
@@ -75,8 +74,8 @@ class HomePage extends React.Component {
 										Select
 									</Button>
 								</Card>
-							</Col>
-						</Row>
+							</Row>
+						</div>
 					</li>
 				</div>
 			);
@@ -97,13 +96,9 @@ class HomePage extends React.Component {
 					</div>
 				) : (
 					<div>
-						<h5 className="h5-homepage">Welcome to our sign up page!</h5>
+						<h5>Welcome to our sign up page!</h5>
 						<div>
-							<Button
-								onClick={this.getEvents}
-								className="home_button"
-								color="success"
-							>
+							<Button onClick={this.getEvents} color="success">
 								Click here for future dates
 							</Button>
 						</div>

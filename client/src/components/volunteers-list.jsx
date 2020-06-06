@@ -1,14 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import {
-	Card,
-	CardText,
-	CardTitle,
-	CardSubtitle,
-	Button,
-	Row,
-	Col,
-} from "reactstrap";
+import { Card, CardText, CardTitle, CardSubtitle, Row, Col } from "reactstrap";
 
 const VolunteersList = ({ date, route, volunteers }) => {
 	let displayDate = date;
@@ -19,7 +11,7 @@ const VolunteersList = ({ date, route, volunteers }) => {
 
 	return (
 		<div>
-			<h5 className="small-title">Signed Up Volunteers:</h5>
+			<h5>Signed Up Volunteers:</h5>
 			<li>
 				<Row className="row">
 					<Col sm="4">
@@ -42,11 +34,6 @@ const VolunteersList = ({ date, route, volunteers }) => {
 					</Col>
 				</Row>
 			</li>
-			<Button>
-				<a href="/" className="back-to-home-link">
-					Home Page
-				</a>
-			</Button>
 		</div>
 	);
 };

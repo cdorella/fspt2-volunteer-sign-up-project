@@ -1,21 +1,8 @@
 .App {
 	text-align: center;
 	min-height: 400px;
-	/* margin-bottom: 100px; */
 	clear: both;
 	overflow: auto;
-	/* overflow: check if auto or not  */
-}
-
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: #d5f6b8;
 }
 
 .page-container {
@@ -28,76 +15,39 @@
 .content-wrap {
 	flex: 1;
 	background-image: url("https://cdn.stocksnap.io/img-thumbs/960w/sparklers-fireworks_ELV1EZNKLR.jpg");
-
-	/* Full height */
 	height: 100%;
-
-	/* Center and scale the image nicely */
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+.detailed-content-wrap {
+	padding-bottom: 3.5em;
 }
 
 .main-header {
 	padding: 1em;
 	position: relative;
 	width: 100%;
+	height: 3.5em;
 	font-family: "Lato", sans-serif;
 	background-color: #f5fffa;
 }
 
 .main-footer {
-	color: black;
 	padding: 1em;
 	position: absolute;
 	width: 100%;
 	bottom: 0;
+	height: 3.5em;
 	font-family: "Lato", sans-serif;
 	background-color: #f5fffa;
-}
-
-.footer {
-	height: 24px;
-	width: 100%;
-	background-image: none;
-	background-repeat: repeat;
 	background-attachment: scroll;
 	background-position: 0% 0%;
-	position: fixed;
-	bottom: 0pt;
-	left: 0pt;
 }
-
-/* .footer_contents {
-	height: 24px;
-	width: 1000px;
-	margin: auto;
-} */
 
 .link {
 	font-family: "Lato", sans-serif;
 	font-weight: bold;
 	color: black;
-}
-
-h1 {
-	font-family: "Manrope", sans-serif;
-	font-weight: bold;
-}
-
-h5 {
-	font-family: "Manrope", sans-serif;
-	font-weight: bold;
-}
-
-h6 {
-	font-family: "Manrope", sans-serif;
-}
-
-button {
-	font-family: "Lato", sans-serif;
-}
-
-p {
-	font-family: "Lato", sans-serif;
 }

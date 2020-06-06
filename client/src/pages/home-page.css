@@ -1,11 +1,6 @@
-h1 {
-	font-family: "Manrope", sans-serif;
-	font-weight: bold;
-	color: #f5fffa;
-}
-
+h1,
 h4,
-.h5-homepage {
+h5 {
 	font-family: "Manrope", sans-serif;
 	font-weight: bold;
 	color: #f5fffa;
@@ -15,12 +10,30 @@ h6 {
 	font-family: "Manrope", sans-serif;
 }
 
-.home_button {
+h5.modal-title {
+	color: black;
+}
+
+.modal-text {
+	font-family: "Lato", sans-serif;
+}
+
+.modal-header {
 	font-family: "Lato", sans-serif;
 }
 
 p {
 	font-family: "Lato", sans-serif;
+}
+
+button {
+	font-family: "Lato", sans-serif;
+}
+
+label {
+	font-family: "Lato", sans-serif;
+	color: black;
+	font-size: bold;
 }
 
 li {
@@ -32,7 +45,13 @@ li {
 	justify-content: center;
 }
 
-.card_title_home {
+.card_title {
+	font-family: "Manrope", sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.card_subtitle {
 	font-family: "Manrope", sans-serif;
 	font-weight: bold;
 }
@@ -43,4 +62,15 @@ li {
 
 .card_button {
 	font-family: "Lato", sans-serif;
+}
+
+.alert-link {
+	font-family: "Lato", sans-serif;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	min-height: 25vh;
 }

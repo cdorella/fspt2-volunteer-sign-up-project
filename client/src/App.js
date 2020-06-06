@@ -1,12 +1,12 @@
 import React from "react";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 
 import HomePage from "./pages/home-page";
 import Admin from "./pages/admin-page";
 import About from "./pages/about-page";
-import ImageContainer from "./pages/image-container";
+import ImageContainer from "./components/image-container";
 
 class App extends React.Component {
 	constructor(props) {
@@ -41,20 +41,22 @@ class App extends React.Component {
 								</div>
 							</div>
 
-							<Switch>
-								<Route exact path="/" component={HomePage}>
-									<HomePage />
-								</Route>
-								<Route path="/admin" component={Admin}>
-									<Admin />
-								</Route>
-								<Route path="/about" component={About}>
-									<ImageContainer />
-									<About />
-								</Route>
-							</Switch>
+							<div className="detailed-content-wrap">
+								<Switch>
+									<Route exact path="/" component={HomePage}>
+										<HomePage />
+									</Route>
+									<Route path="/admin" component={Admin}>
+										<Admin />
+									</Route>
+									<Route path="/about" component={About}>
+										<ImageContainer />
+										<About />
+									</Route>
+								</Switch>
+							</div>
 
-							<div className="footer">
+							<div>
 								<div className="main-footer">
 									<div className="float-left">
 										<NavLink className="link" to="/admin">

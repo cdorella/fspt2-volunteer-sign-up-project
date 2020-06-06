@@ -1,27 +1,20 @@
-h1,
-h5 {
-	font-family: "Manrope", sans-serif;
-	font-weight: bold;
-}
-
-h6 {
-	font-family: "Manrope", sans-serif;
-}
-
-p {
-	font-family: "Lato", sans-serif;
-}
-
 .homepage-link {
 	font-weight: bold;
 	color: black;
 	text-decoration: underline;
 }
-
-.about-text {
-	color: #f5fffa;
-}
-
 .about-email {
 	font-weight: bold;
+}
+
+.about-container {
+	display: flex;
+	justify-content: center;
+}
+
+.image-container {
+	padding: 26px;
+	width: 380px;
+	height: 280px;
+	margin: 16px;
 }
