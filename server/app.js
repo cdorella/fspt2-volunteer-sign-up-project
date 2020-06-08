@@ -12,6 +12,14 @@ app.use(bodyParser.json());
 
 app.use("/api", apiRoutes);
 
+app.get('/super-duper/:toWhom', (req, res) => {
+	const { toWhom } = req.params
+
+	res.send({
+		message: `This is a super duper for ${toWhom}`
+	})
+})
+
 app.get("/", (req, res) => {
 	res.send({
 		message: "Hello World",
