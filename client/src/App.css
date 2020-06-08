@@ -13,6 +13,7 @@
 }
 
 .content-wrap {
+	background-color: #111;
 	flex: 1;
 	background-image: url("https://cdn.stocksnap.io/img-thumbs/960w/sparklers-fireworks_ELV1EZNKLR.jpg");
 	height: 100%;
