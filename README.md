@@ -14,20 +14,20 @@ Back-end: NodeJs, Express & MySQL.
 
 ## User Flow Diagram
 
-![]("images/User%20Flow.png")
+<img src="images/User%20Flow.png">
 
 ## Database schema
 
-![]("images/Database%20Schema.JPG")
+<img src="images/Database%20Schema.JPG">
 
 ## API Routes Plan
 
-![]("images/API%20Routes%201.JPG")
-![]("images/API%20Routes%202.JPG")
+<img src="images/API%20Routes%201.JPG">
+<img src="images/API%20Routes%202.JPG">
 
 ## Full Stack Architecture Drawing
 
-![]("images/MVP%20Project%20Architecture.jpg")
+<img src="images/MVP%20Project%20Architecture.jpg">
 
 ## Setup
 

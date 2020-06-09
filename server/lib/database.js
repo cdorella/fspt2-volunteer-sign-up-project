@@ -19,6 +19,12 @@ con.connect(function (err) {
 	if (err) throw err;
 	console.log("Connected!");
 
+	let createDatabase = "CREATE DATABASE sign_up_project;";
+	con.query(createDatabase, function (err, result) {
+		if (err) throw err;
+		console.log("Database creation `sign_up_projects` was successful!");
+	});
+
 	let createEventsQuery =
 		"DROP TABLE if exists events; CREATE TABLE events(id INT NOT NULL AUTO_INCREMENT, date DATE NOT NULL, route VARCHAR(40) NOT NULL, PRIMARY KEY (id));";
 	con.query(createEventsQuery, function (err, result) {
