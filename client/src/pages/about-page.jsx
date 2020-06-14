@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./about-page.css";
+import ContactForm from "../components/contact-form";
+import {  Button, Modal } from "reactstrap";
 
-const About = () => {
+
+const About = (props) => {
+	const {className} = props;
+
+	const [modal, setModal] = useState(false);
+
+	const toggle = () => setModal(!modal);
+
 	return (
 		<div>
 			<h1>About Us</h1>
@@ -22,8 +31,16 @@ const About = () => {
 				.
 			</h5>
 			<h6 className="about-email">Email: esperanca_barcelona@esperanca.com</h6>
+			<Button color="success" onClick={toggle}>
+				Contact us
+			</Button>
+			<Modal isOpen={modal} toggle={toggle} className={className}>
+				<ContactForm/>
+			</Modal>
 		</div>
 	);
 };
+
+
 
 export default About;
