@@ -40,7 +40,6 @@ Run `yarn` on root folder to install dependencies related to Express.
 ### Database Prep
 
 - Access the MySQL interface in your terminal by running `mysql -u root -p`
-- Create a new database called sign_up_project: `create database sign_up_project`
 - Add a `.env` file to the main folder of this repository containing the MySQL authentication information for MySQL user. For example:
 
 ```bash
@@ -54,8 +53,7 @@ Run `yarn` on root folder to install dependencies related to Express.
 
 ### Run Your Development Servers
 
-- Run `yarn start` in project directory to start the Express server on port 5000
-- `cd client` and run `yarn start` to start client server in development mode with hot reloading in port 3000.
+- Run `yarn start` in the project directory to start the servers.
 - You can test your client app in `http://localhost:3000`
 - You can test your API in `http://localhost:5000/api`
 
