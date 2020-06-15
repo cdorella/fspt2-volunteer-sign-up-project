@@ -25,6 +25,8 @@ class EventDetails extends React.Component {
 		};
 	}
 
+	// when a method has several arguments (more than 2 for example) I prefer to use object type arguments
+	// like getRegistrationForm({ date, route, spots, id, name }) so then the order of the arguments are trivial
 	getRegistrationForm = (date, route, spots, id, name) => {
 		const newSpots = spots - 1;
 		this.setState({

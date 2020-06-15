@@ -4,6 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 const ConfirmationPopUp = props => {
 	const { className, name, date, route } = props;
 
+	// I'm so proud!
 	const [modal, setModal] = useState(false);
 
 	const toggle = () => setModal(!modal);
@@ -28,6 +29,7 @@ const ConfirmationPopUp = props => {
 					Confirmation
 				</ModalHeader>
 				<ModalBody className="modal-text">
+					{/* nitpick: try to avoid using br for spacing, instead <p> or other ones might be better */}
 					You have selected the following task: <br></br>
 					<strong>{name}</strong> on <strong>{date}</strong> for{" "}
 					<strong>{route}</strong> Route. <br></br>

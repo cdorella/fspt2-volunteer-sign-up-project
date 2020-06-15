@@ -53,6 +53,8 @@ class HomePage extends React.Component {
 		let displayEvents = events.map(event => {
 			const { id, date, route } = event;
 			let displayDate = date;
+
+			// I have seen this piece of code in different places, an abstraction to a function might be helpful formatDate(displayDate) => returns the value
 			displayDate = displayDate
 				.split("-")
 				.map(e => (e[0] === "0" ? e.slice(1) : e));

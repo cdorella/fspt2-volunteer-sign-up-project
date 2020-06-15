@@ -48,6 +48,7 @@ class Admin extends React.Component {
 		const target = event.target;
 		const value = target.value;
 		const name = target.name;
+		// this can be avoid by not adding handleInputChange to the task input
 		if (name != "tasks") {
 			this.setState({
 			[name]: value,
@@ -57,6 +58,7 @@ class Admin extends React.Component {
 	};
 
 	handleTasksChange = (event, index) => {
+		// this is a little bit confusing, question: who is the shape of the task?
 		let tasks = [...this.state.tasks]
 		const currentTask = tasks[index]
 		const name = event.target.name
@@ -134,6 +136,7 @@ class Admin extends React.Component {
 			});
 	};
 
+	// nice closure!
 	getEventVolunteersByID = eventId => () => {
 		fetch(`/api/events/${eventId}/volunteers`)
 			.then(response => response.json())
@@ -162,6 +165,7 @@ class Admin extends React.Component {
 			volunteers,
 		} = this.state;
 
+		// when you see a pattern like this, what I do is to create a new component "EventList" for example
 		let displayEvents = events.map(event => {
 			const { id, date, route } = event;
 			let displayDate = date;

@@ -19,6 +19,7 @@ router.post("/events", async (req, res) => {
 			spots_available,
 		} = req.body;
 
+		// it seems that this variable is not being used, is common to remove unused code to avoid confusion
 		const volunteersNeeded = await db(
 			`INSERT INTO events (date, route) VALUES ('${date}','${route}'); 
 			SELECT LAST_INSERT_ID() INTO @eventId; 
@@ -54,6 +55,7 @@ router.get("/events/:id", async (req, res) => {
 			`SELECT event_tasks.id, tasks.task_name, tasks.task_description, event_tasks.spots_available FROM event_tasks INNER JOIN tasks ON event_tasks.task_id = tasks.id WHERE event_tasks.event_id = ${id}`
 		);
 
+		// a check that eventData.data.length > 0 can help you avoid errors
 		res.send({
 			id: eventData.data[0].id,
 			date: eventData.data[0].date,
