@@ -26,9 +26,13 @@ class Admin extends React.Component {
 			formSubmitted: false,
 			date: "",
 			route: "",
-			task_name: "",
-			task_description: "",
-			spots_available: "",
+			tasks: [
+			   {
+				task_name: "",
+			    task_description: "",
+				spots_available: "",
+			  }
+			],
 			eventsLoaded: false,
 			events: [],
 			selectedEvent: false,
@@ -44,10 +48,34 @@ class Admin extends React.Component {
 		const target = event.target;
 		const value = target.value;
 		const name = target.name;
-		this.setState({
+		if (name != "tasks") {
+			this.setState({
 			[name]: value,
-		});
+		  });
+		}
+		
 	};
+
+	handleTasksChange = (event, index) => {
+		let tasks = [...this.state.tasks]
+		const currentTask = tasks[index]
+		const name = event.target.name
+		currentTask[name] = event.target.value
+
+		this.setState({tasks: [...tasks]})
+
+	}
+
+	addTasks = e => {
+		this.setState(prevState => ({
+		  date: "",
+		  route: "",
+		  tasks: [
+			...prevState.tasks,
+			{ task_name: "", task_description: "", spots_available: "" }
+		  ]
+		}));
+	  };
 
 	handleSubmit = event => {
 		event.preventDefault();
@@ -56,9 +84,13 @@ class Admin extends React.Component {
 			formSubmitted: true,
 			date: "",
 			route: "",
-			task_name: "",
-			task_description: "",
-			spots_available: "",
+			tasks: [
+				{
+		    	task_name: "",
+				task_description: "",
+				spots_available: "",
+				}
+			]
 		});
 	};
 
@@ -66,9 +98,7 @@ class Admin extends React.Component {
 		const {
 			date,
 			route,
-			task_name,
-			task_description,
-			spots_available,
+			tasks
 		} = this.state;
 
 		fetch("/api/events", {
@@ -79,9 +109,9 @@ class Admin extends React.Component {
 			body: JSON.stringify({
 				date: date,
 				route: route,
-				task_name: task_name,
-				task_description: task_description,
-				spots_available: spots_available,
+				task_name: tasks.task_name,
+				task_description: tasks.task_description,
+				spots_available: tasks.spots_available,	
 			}),
 		})
 			.then(response => response.json())
@@ -125,9 +155,7 @@ class Admin extends React.Component {
 			formSubmitted,
 			date,
 			route,
-			task_name,
-			task_description,
-			spots_available,
+			tasks,
 			events,
 			eventsLoaded,
 			selectedEvent,
@@ -226,15 +254,18 @@ class Admin extends React.Component {
 								</FormGroup>
 							</Col>
 						</Row>
-						<Row form className="row">
+						<div id="dynamicForm">
+        					{this.state.tasks.map((task, idx) => (
+        					<div key={idx}>
+								<Row form className="row">
 							<Col md={2}>
 								<FormGroup>
 									<Label for="task_name">Task Title:</Label>
 									<Input
 										type="text"
 										name="task_name"
-										value={task_name}
-										onChange={this.handleInputChange}
+										value={tasks.task_name}
+										onChange={(event) => this.handleTasksChange(event, idx)}
 									/>
 								</FormGroup>
 							</Col>
@@ -244,23 +275,27 @@ class Admin extends React.Component {
 									<Input
 										type="number"
 										name="spots_available"
-										value={spots_available}
-										onChange={this.handleInputChange}
+										value={tasks.spots_available}
+										onChange={(event) => this.handleTasksChange(event, idx)}
 									/>
 								</FormGroup>
 							</Col>
 						</Row>
-						<Row>
-							<Col md={6}>
-								<Label for="task_description">Task Description:</Label>
-								<Input
-									type="text"
-									name="task_description"
-									value={task_description}
-									onChange={this.handleInputChange}
-								/>
-							</Col>
-						</Row>
+						 <Row>
+						 	<Col md={6}>
+						 		<Label for="task_description">Task Description:</Label>
+						 		<Input
+						 			type="text"
+						 			name="task_description"
+						 			value={tasks.task_description}
+						 			onChange={(event) => this.handleTasksChange(event, idx)}
+						 		/>
+						 	</Col>
+						 </Row>
+						 <Button onClick={this.addTasks}>+</Button>
+						</div>
+						 ))}
+						 </div>
 						<br></br>
 						<Button>Submit</Button>
 						<hr />
