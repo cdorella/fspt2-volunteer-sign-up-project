@@ -30,7 +30,6 @@ const About = (props) => {
 				</a>
 				.
 			</h5>
-			<h6 className="about-email">Email: esperanca_barcelona@esperanca.com</h6>
 			<Button color="success" onClick={toggle}>
 				Contact us
 			</Button>

@@ -49,6 +49,8 @@ class ContactForm extends React.Component{
     render() {
         return(
             <Form onSubmit={this.handleSubmit}>
+                <h3>Contact Us</h3>
+                <p>We'd love to hear from you! Leave a message below and we will get in touch with you shortly</p>
                 <FormGroup>
                     <Label for="name">Name</Label>
                     <Input 
@@ -72,7 +74,7 @@ class ContactForm extends React.Component{
                 <FormGroup>
                     <Label for="message">Message</Label>
                     <Input 
-                       type="text" 
+                       type="textarea" 
                        name="message" 
                        id="message" 
                        placeholder="Message"
