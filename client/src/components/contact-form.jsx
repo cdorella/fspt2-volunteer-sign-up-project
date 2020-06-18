@@ -13,7 +13,6 @@ class ContactForm extends React.Component{
         }
     }
 
-
     handleSubmit = event => {
         event.preventDefault();
         
