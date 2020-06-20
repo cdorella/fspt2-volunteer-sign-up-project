@@ -9,28 +9,31 @@ router.get("/", (req, res) => {
 });
 
 // ADD NEW EVENT
-router.post("/events", async (req, res) => {
-	try {
+router.post("/events", (req, res) => {
+	//try{
 		const {
 			date,
 			route,
-			task_name,
-			task_description,
-			spots_available,
+			tasks  
 		} = req.body;
-
-		const volunteersNeeded = await db(
+	
+		const taskQuery = tasks.map(task =>
+			`INSERT INTO tasks (task_name, task_description) VALUES ('${task.task_name}', '${task.task_description}'); 
+			SELECT LAST_INSERT_ID() INTO @taskId; 
+			INSERT INTO event_tasks (event_id, task_id, spots_available) VALUES (@eventId, @taskId, '${task.spots_available}');`
+		);
+	
+		db(
 			`INSERT INTO events (date, route) VALUES ('${date}','${route}'); 
 			SELECT LAST_INSERT_ID() INTO @eventId; 
-			INSERT INTO tasks (task_name, task_description) VALUES ('${task_name}', '${task_description}'); 
-			SELECT LAST_INSERT_ID() INTO @taskId; 
-			INSERT INTO event_tasks (event_id, task_id, spots_available) VALUES (@eventId, @taskId, '${spots_available}');`
-		);
+			${taskQuery.join("")}`
+		).then(() =>
+		res.status(201).send({})
+		) 
 
-		res.status(201).send({});
-	} catch (err) {
-		res.status(500).send(err);
-	}
+	//} catch (err) {
+		//res.status(500).send(err);
+	//}
 });
 
 // GET EVENTS (DATE & ROUTE ONLY)

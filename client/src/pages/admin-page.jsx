@@ -48,7 +48,7 @@ class Admin extends React.Component {
 		const target = event.target;
 		const value = target.value;
 		const name = target.name;
-		if (name != "tasks") {
+		if (name !== "tasks") {
 			this.setState({
 			[name]: value,
 		  });
@@ -109,14 +109,13 @@ class Admin extends React.Component {
 			body: JSON.stringify({
 				date: date,
 				route: route,
-				task_name: tasks.task_name,
-				task_description: tasks.task_description,
-				spots_available: tasks.spots_available,	
+				tasks: tasks		
 			}),
 		})
 			.then(response => response.json())
 			.then(data => console.log(data))
 			.catch(err => console.log(err));
+
 	};
 
 	getEvents = () => {
@@ -255,7 +254,7 @@ class Admin extends React.Component {
 							</Col>
 						</Row>
 						<div id="dynamicForm">
-        					{this.state.tasks.map((task, idx) => (
+        					{tasks.map((task, idx) => (
         					<div key={idx}>
 								<Row form className="row">
 							<Col md={2}>
@@ -264,7 +263,7 @@ class Admin extends React.Component {
 									<Input
 										type="text"
 										name="task_name"
-										value={tasks.task_name}
+										value={task.task_name}
 										onChange={(event) => this.handleTasksChange(event, idx)}
 									/>
 								</FormGroup>
@@ -275,26 +274,24 @@ class Admin extends React.Component {
 									<Input
 										type="number"
 										name="spots_available"
-										value={tasks.spots_available}
+										value={task.spots_available}
 										onChange={(event) => this.handleTasksChange(event, idx)}
 									/>
 								</FormGroup>
 							</Col>
-						</Row>
-						 <Row>
-						 	<Col md={6}>
+						 	<Col md={4}>
 						 		<Label for="task_description">Task Description:</Label>
 						 		<Input
 						 			type="text"
 						 			name="task_description"
-						 			value={tasks.task_description}
+						 			value={task.task_description}
 						 			onChange={(event) => this.handleTasksChange(event, idx)}
 						 		/>
 						 	</Col>
-						 </Row>
-						 <Button onClick={this.addTasks}>+</Button>
+						 </Row> 
 						</div>
 						 ))}
+						 <Button onClick={this.addTasks}>Add new task to this event</Button>
 						 </div>
 						<br></br>
 						<Button>Submit</Button>
