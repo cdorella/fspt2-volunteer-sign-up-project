@@ -1,90 +1,103 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 
-class ContactForm extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state={
-            name: "",
-            email: "",
-            message: "",
-            sent: false
-        }
-    }
+class ContactForm extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			name: "",
+			email: "",
+			message: "",
+			sent: false,
+		};
+	}
 
-    handleSubmit = event => {
-        event.preventDefault();
-        
-        emailjs.sendForm('default_service', 'contact_form', event.target, 'user_2853rwzQwOgtGRHnfnFJO')
-        .then((result) => {
-        console.log(result.text);
-        }, (error) => {
-        console.log(error.text);
-        });
+	handleSubmit = event => {
+		event.preventDefault();
 
-        this.resetForm()
-      
-    };
+		emailjs
+			.sendForm(
+				"default_service",
+				"contact_form",
+				event.target,
+				"user_2853rwzQwOgtGRHnfnFJO"
+			)
+			.then(
+				result => {
+					console.log(result.text);
+				},
+				error => {
+					console.log(error.text);
+				}
+			);
 
-    resetForm() {
-        this.setState({
-          name: '',
-          email: '',
-          message: '',
-          sent: true,
-        })
-      }
-    
-    handleChange = event => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-        this.setState({
-            [name]: value,
-        });
-    }
+		this.resetForm();
+	};
 
-    render() {
-        return(
-            <Form onSubmit={this.handleSubmit}>
-                <h3>Contact Us</h3>
-                <p>We'd love to hear from you! Leave a message below and we will get in touch with you shortly</p>
-                <FormGroup>
-                    <Label for="name">Name</Label>
-                    <Input 
-                       type="text" 
-                       name="name" 
-                       id="name" 
-                       placeholder="Name"
-                       value={this.state.name}
-                       onChange={this.handleChange} />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="email">Email</Label>
-                    <Input 
-                       type="email" 
-                       name="email" 
-                       id="email" 
-                       placeholder="Email address"
-                       value={this.state.email}
-                       onChange={this.handleChange} />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="message">Message</Label>
-                    <Input 
-                       type="textarea" 
-                       name="message" 
-                       id="message" 
-                       placeholder="Message"
-                       value={this.state.message}
-                       onChange={this.handleChange} />
-                </FormGroup>
-                <Button color="success">Submit!</Button>
-            </Form>
-        )
-    }
+	resetForm() {
+		this.setState({
+			name: "",
+			email: "",
+			message: "",
+			sent: true,
+		});
+	}
+
+	handleChange = event => {
+		const target = event.target;
+		const value = target.value;
+		const name = target.name;
+		this.setState({
+			[name]: value,
+		});
+	};
+
+	render() {
+		return (
+			<Form onSubmit={this.handleSubmit}>
+				<h3>Contact Us</h3>
+				<p>
+					We'd love to hear from you! Leave a message below and we will get in
+					touch with you shortly
+				</p>
+				<FormGroup>
+					<Label for="name">Name</Label>
+					<Input
+						type="text"
+						name="name"
+						id="name"
+						placeholder="Name"
+						value={this.state.name}
+						onChange={this.handleChange}
+					/>
+				</FormGroup>
+				<FormGroup>
+					<Label for="email">Email</Label>
+					<Input
+						type="email"
+						name="email"
+						id="email"
+						placeholder="Email address"
+						value={this.state.email}
+						onChange={this.handleChange}
+					/>
+				</FormGroup>
+				<FormGroup>
+					<Label for="message">Message</Label>
+					<Input
+						type="textarea"
+						name="message"
+						id="message"
+						placeholder="Message"
+						value={this.state.message}
+						onChange={this.handleChange}
+					/>
+				</FormGroup>
+				<Button color="success">Submit!</Button>
+			</Form>
+		);
+	}
 }
-
 
 export default ContactForm;

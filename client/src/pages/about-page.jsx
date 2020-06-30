@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./about-page.css";
 import ContactForm from "../components/contact-form";
-import {  Button, Modal } from "reactstrap";
+import { Button, Modal, ModalBody } from "reactstrap";
 
-
-const About = (props) => {
-	const {className} = props;
+const About = props => {
+	const { className } = props;
 
 	const [modal, setModal] = useState(false);
 
@@ -34,12 +33,12 @@ const About = (props) => {
 				Contact us
 			</Button>
 			<Modal isOpen={modal} toggle={toggle} className={className}>
-				<ContactForm/>
+				<ModalBody>
+					<ContactForm />
+				</ModalBody>
 			</Modal>
 		</div>
 	);
 };
-
-
 
 export default About;

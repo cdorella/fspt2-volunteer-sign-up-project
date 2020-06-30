@@ -10,30 +10,20 @@ router.get("/", (req, res) => {
 
 // ADD NEW EVENT
 router.post("/events", (req, res) => {
-	//try{
-		const {
-			date,
-			route,
-			tasks  
-		} = req.body;
-	
-		const taskQuery = tasks.map(task =>
+	const { date, route, tasks } = req.body;
+
+	const taskQuery = tasks.map(
+		task =>
 			`INSERT INTO tasks (task_name, task_description) VALUES ('${task.task_name}', '${task.task_description}'); 
 			SELECT LAST_INSERT_ID() INTO @taskId; 
 			INSERT INTO event_tasks (event_id, task_id, spots_available) VALUES (@eventId, @taskId, '${task.spots_available}');`
-		);
-	
-		db(
-			`INSERT INTO events (date, route) VALUES ('${date}','${route}'); 
-			SELECT LAST_INSERT_ID() INTO @eventId; 
-			${taskQuery.join("")}`
-		).then(() =>
-		res.status(201).send({})
-		) 
+	);
 
-	//} catch (err) {
-		//res.status(500).send(err);
-	//}
+	db(`INSERT INTO events (date, route) VALUES ('${date}','${route}'); 
+			SELECT LAST_INSERT_ID() INTO @eventId; 
+			${taskQuery.join("")}`)
+		.then(() => res.status(201).send({}))
+		.catch(err => res.status(500).send(err));
 });
 
 // GET EVENTS (DATE & ROUTE ONLY)

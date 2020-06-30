@@ -14,7 +14,6 @@ import {
 	CardTitle,
 	CardText,
 } from "reactstrap";
-
 import VolunteersList from "../components/volunteers-list";
 
 class Admin extends React.Component {
@@ -27,11 +26,11 @@ class Admin extends React.Component {
 			date: "",
 			route: "",
 			tasks: [
-			   {
-				task_name: "",
-			    task_description: "",
-				spots_available: "",
-			  }
+				{
+					task_name: "",
+					task_description: "",
+					spots_available: "",
+				},
 			],
 			eventsLoaded: false,
 			events: [],
@@ -48,34 +47,28 @@ class Admin extends React.Component {
 		const target = event.target;
 		const value = target.value;
 		const name = target.name;
-		if (name !== "tasks") {
-			this.setState({
+		this.setState({
 			[name]: value,
-		  });
-		}
-		
+		});
 	};
 
 	handleTasksChange = (event, index) => {
-		let tasks = [...this.state.tasks]
-		const currentTask = tasks[index]
-		const name = event.target.name
-		currentTask[name] = event.target.value
+		let tasks = [...this.state.tasks];
+		const currentTask = tasks[index];
+		const name = event.target.name;
+		currentTask[name] = event.target.value;
 
-		this.setState({tasks: [...tasks]})
-
-	}
+		this.setState({ tasks: [...tasks] });
+	};
 
 	addTasks = e => {
 		this.setState(prevState => ({
-		  date: "",
-		  route: "",
-		  tasks: [
-			...prevState.tasks,
-			{ task_name: "", task_description: "", spots_available: "" }
-		  ]
+			tasks: [
+				...prevState.tasks,
+				{ task_name: "", task_description: "", spots_available: "" },
+			],
 		}));
-	  };
+	};
 
 	handleSubmit = event => {
 		event.preventDefault();
@@ -86,20 +79,16 @@ class Admin extends React.Component {
 			route: "",
 			tasks: [
 				{
-		    	task_name: "",
-				task_description: "",
-				spots_available: "",
-				}
-			]
+					task_name: "",
+					task_description: "",
+					spots_available: "",
+				},
+			],
 		});
 	};
 
 	addEvent = () => {
-		const {
-			date,
-			route,
-			tasks
-		} = this.state;
+		const { date, route, tasks } = this.state;
 
 		fetch("/api/events", {
 			method: "POST",
@@ -109,13 +98,12 @@ class Admin extends React.Component {
 			body: JSON.stringify({
 				date: date,
 				route: route,
-				tasks: tasks		
+				tasks: tasks,
 			}),
 		})
 			.then(response => response.json())
 			.then(data => console.log(data))
 			.catch(err => console.log(err));
-
 	};
 
 	getEvents = () => {
@@ -254,45 +242,47 @@ class Admin extends React.Component {
 							</Col>
 						</Row>
 						<div id="dynamicForm">
-        					{tasks.map((task, idx) => (
-        					<div key={idx}>
-								<Row form className="row">
-							<Col md={2}>
-								<FormGroup>
-									<Label for="task_name">Task Title:</Label>
-									<Input
-										type="text"
-										name="task_name"
-										value={task.task_name}
-										onChange={(event) => this.handleTasksChange(event, idx)}
-									/>
-								</FormGroup>
-							</Col>
-							<Col md={2}>
-								<FormGroup>
-									<Label for="spots_available">Volunteers Needed:</Label>
-									<Input
-										type="number"
-										name="spots_available"
-										value={task.spots_available}
-										onChange={(event) => this.handleTasksChange(event, idx)}
-									/>
-								</FormGroup>
-							</Col>
-						 	<Col md={4}>
-						 		<Label for="task_description">Task Description:</Label>
-						 		<Input
-						 			type="text"
-						 			name="task_description"
-						 			value={task.task_description}
-						 			onChange={(event) => this.handleTasksChange(event, idx)}
-						 		/>
-						 	</Col>
-						 </Row> 
+							{tasks.map((task, idx) => (
+								<div key={idx}>
+									<Row form className="row">
+										<Col md={2}>
+											<FormGroup>
+												<Label for="task_name">Task Title:</Label>
+												<Input
+													type="text"
+													name="task_name"
+													value={task.task_name}
+													onChange={event => this.handleTasksChange(event, idx)}
+												/>
+											</FormGroup>
+										</Col>
+										<Col md={2}>
+											<FormGroup>
+												<Label for="spots_available">Volunteers Needed:</Label>
+												<Input
+													type="number"
+													name="spots_available"
+													value={task.spots_available}
+													onChange={event => this.handleTasksChange(event, idx)}
+												/>
+											</FormGroup>
+										</Col>
+										<Col md={4}>
+											<Label for="task_description">Task Description:</Label>
+											<Input
+												type="text"
+												name="task_description"
+												value={task.task_description}
+												onChange={event => this.handleTasksChange(event, idx)}
+											/>
+										</Col>
+									</Row>
+								</div>
+							))}
+							<Button onClick={this.addTasks}>
+								Add new task to this event
+							</Button>
 						</div>
-						 ))}
-						 <Button onClick={this.addTasks}>Add new task to this event</Button>
-						 </div>
 						<br></br>
 						<Button>Submit</Button>
 						<hr />

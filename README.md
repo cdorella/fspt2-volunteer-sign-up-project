@@ -49,7 +49,7 @@ Run `yarn` on root folder to install dependencies related to Express.
   DB_PASS=YOURPASSWORD
 ```
 
-- Run `yarn migrate` in the main folder of this repository, in a new terminal window. This will create the 5 tables you need for this project in your database (events, tasks, volunteers, event_tasks, tasks_volunteers).
+- Run `yarn migrate` in the main folder of this repository, in a new terminal window. This will create the database and the 5 tables you need for this project in your database (events, tasks, volunteers, event_tasks, tasks_volunteers).
 
 ### Run Your Development Servers
 
