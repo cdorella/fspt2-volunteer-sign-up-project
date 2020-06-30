@@ -104,7 +104,7 @@ router.patch("/events/:id", (req, res) => {
 		.catch(err => res.status(500).send(err));
 });
 
-// GET VOLUNTEER PERSONAL INFO ***NOT CURRENTLY BEING USED
+// GET VOLUNTEER PERSONAL INFO
 router.get("/volunteers/:id", (req, res) => {
 	const { id } = req.params;
 	db(`SELECT * from volunteers WHERE id='${id}';`)
