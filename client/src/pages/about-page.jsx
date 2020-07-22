@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./about-page.css";
 import ContactForm from "../components/contact-form";
-import { Button, Modal, ModalBody } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 
 const About = props => {
 	const { className } = props;
@@ -33,6 +33,11 @@ const About = props => {
 				Contact us
 			</Button>
 			<Modal isOpen={modal} toggle={toggle} className={className}>
+				<ModalHeader toggle={toggle}>
+					<h3>
+						<strong>Contact Us</strong>
+					</h3>
+				</ModalHeader>
 				<ModalBody>
 					<ContactForm />
 				</ModalBody>

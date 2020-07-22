@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import emailjs from "emailjs-com";
+import apiKey from "../apiKey";
 
 class ContactForm extends React.Component {
 	constructor(props) {
@@ -17,12 +18,7 @@ class ContactForm extends React.Component {
 		event.preventDefault();
 
 		emailjs
-			.sendForm(
-				"default_service",
-				"contact_form",
-				event.target,
-				"user_2853rwzQwOgtGRHnfnFJO"
-			)
+			.sendForm("default_service", "contact_form", event.target, apiKey.USER_ID)
 			.then(
 				result => {
 					console.log(result.text);
@@ -56,10 +52,9 @@ class ContactForm extends React.Component {
 	render() {
 		return (
 			<Form onSubmit={this.handleSubmit}>
-				<h3>Contact Us</h3>
 				<p>
 					We'd love to hear from you! Leave a message below and we will get in
-					touch with you shortly
+					touch with you shortly.
 				</p>
 				<FormGroup>
 					<Label for="name">Name</Label>

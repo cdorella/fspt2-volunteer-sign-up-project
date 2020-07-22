@@ -6,7 +6,7 @@ The project is a volunteer sign up page inspired by "Esperança", a community of
 
 In order to build this MVP I used the following stack:
 
-Front-end: React.js, JavaScript, HTML, CSS & Bootstrap.
+Front-end: JavaScript, React.js, HTML, CSS & Bootstrap.
 
 Back-end: Node.js, Express.js & MySQL.
 
@@ -25,10 +25,6 @@ Back-end: Node.js, Express.js & MySQL.
 <img src="images/API%20Routes%201.JPG">
 <img src="images/API%20Routes%202.JPG">
 
-## Full Stack Architecture Drawing
-
-<img src="images/MVP%20Project%20Architecture.jpg">
-
 ## Setup
 
 ### Dependencies
@@ -46,7 +42,7 @@ Run `yarn` on root folder to install dependencies related to Express.
   DB_HOST=localhost
   DB_USER=root
   DB_NAME=sign_up_project
-  DB_PASS=YOURPASSWORD
+  DB_PASS=
 ```
 
 - Run `yarn migrate` in the main folder of this repository, in a new terminal window. This will create the database and the 5 tables you need for this project in your database (events, tasks, volunteers, event_tasks, tasks_volunteers).
