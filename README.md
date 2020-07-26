@@ -1,14 +1,19 @@
-# Volunteer Sign Up Project
+# Esperança Project
 
 Welcome to my first MVP. This was created in a one-week sprint as a bootcamp project for CodeOp.
 
 The project is a volunteer sign up page inspired by "Esperança", a community of volunteers that go out to neighborhoods of Barcelona handing out food and talking to people living on the streets.
 
-In order to build this MVP I used the following stack:
+<img src="images/Home%20Page.JPG">
 
-Front-end: JavaScript, React.js, HTML, CSS & Bootstrap.
+## Technologies
 
+The main technologies used to develop this project were:
+
+Front-end: JavaScript ES6, React.js, HTML, CSS & Bootstrap.
 Back-end: Node.js, Express.js & MySQL.
+
+- [EmailJS](https://www.emailjs.com/): Used to send emails directly through the contact form on the about page.
 
 ## Documentation
 
@@ -16,7 +21,7 @@ Back-end: Node.js, Express.js & MySQL.
 
 <img src="images/User%20Flow.png">
 
-## Database schema
+## Database Schema
 
 <img src="images/Database%20Schema.JPG">
 
@@ -24,6 +29,10 @@ Back-end: Node.js, Express.js & MySQL.
 
 <img src="images/API%20Routes%201.JPG">
 <img src="images/API%20Routes%202.JPG">
+
+## Project Architecture
+
+<img src="images/Project%20Architecture.jpg">
 
 ## Setup
 
@@ -46,6 +55,24 @@ Run `yarn` on root folder to install dependencies related to Express.
 ```
 
 - Run `yarn migrate` in the main folder of this repository, in a new terminal window. This will create the database and the 5 tables you need for this project in your database (events, tasks, volunteers, event_tasks, tasks_volunteers).
+
+### Add env variables
+
+On the root folder for accessing the api port:
+
+```bash
+  API_PORT=5000
+```
+
+On the client folder, create a "apiKey.js" file with the following information and add your personal EmailJS user id:
+
+```bash
+export default {
+	USER_ID:
+};
+```
+
+In order to create a user id for EmailJS, you will have to sign up for the service through their website: <a href="https://www.emailjs.com/">EmailJS</a>
 
 ### Run Your Development Servers
 
