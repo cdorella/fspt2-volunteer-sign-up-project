@@ -4,13 +4,16 @@ Welcome to my first MVP. This was created in a one-week sprint as a bootcamp pro
 
 The project is a volunteer sign up page inspired by "Esperança", a community of volunteers that go out to neighborhoods of Barcelona handing out food and talking to people living on the streets.
 
+
 <img src="images/Home%20Page.JPG">
+
 
 ## Technologies
 
 The main technologies used to develop this project were:
 
-Front-end: JavaScript ES6, React.js, HTML, CSS & Bootstrap.
+Front-end: React.js, JavaScript ES6, HTML, CSS, Bootstrap & Reactstrap.
+
 Back-end: Node.js, Express.js & MySQL.
 
 - [EmailJS](https://www.emailjs.com/): Used to send emails directly through the contact form on the about page.
