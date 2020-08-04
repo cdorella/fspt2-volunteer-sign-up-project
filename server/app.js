@@ -15,12 +15,6 @@ app.use(express.static(clientPath));
 
 app.use("/api", apiRoutes);
 
-// app.get("/", (req, res) => {
-// 	res.send({
-// 		message: "Hello World",
-// 	});
-// });
-
 app.get("/*", function (req, res) {
 	res.sendFile(path.join(clientPath, "index.html"));
 });

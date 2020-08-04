@@ -1,7 +1,8 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import emailjs from "emailjs-com";
-// import apiKey from "../apiKey";
+
+const apiKey = process.env.REACT_APP_USER_ID;
 
 class ContactForm extends React.Component {
 	constructor(props) {
@@ -18,13 +19,7 @@ class ContactForm extends React.Component {
 		event.preventDefault();
 
 		emailjs
-			.sendForm(
-				"default_service",
-				"contact_form",
-				event.target,
-				// apiKey.USER_ID,
-				"user_7KHJ5xEwhZZ5nKQNikYDL"
-			)
+			.sendForm("default_service", "contact_form", event.target, apiKey)
 			.then(
 				result => {
 					console.log(result.text);
