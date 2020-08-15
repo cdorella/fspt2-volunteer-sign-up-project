@@ -1,21 +1,20 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Card, CardText, CardTitle, CardSubtitle, Row } from "reactstrap";
+import DisplayDate from "./display-date";
 
 const VolunteersList = ({ date, route, volunteers }) => {
-	let displayDate = date;
-	displayDate = displayDate
-		.split("-")
-		.map(e => (e[0] === "0" ? e.slice(1) : e));
-	displayDate = displayDate[2] + "/" + displayDate[1] + "/" + displayDate[0];
-
 	return (
 		<div>
 			<h5>Signed Up Volunteers:</h5>
 			<li>
 				<Row sm="4" className="row">
 					<Card body className="text-center">
-						<CardTitle className="card_title">{`${displayDate} - ${route} Route`}</CardTitle>
+						<CardTitle className="card_title">
+							{" "}
+							<DisplayDate date={date} />
+							{` - ${route} Route`}
+						</CardTitle>
 
 						{volunteers.map(volunteer => (
 							<CardText className="text-center card_text">

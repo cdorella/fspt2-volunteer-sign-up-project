@@ -15,6 +15,7 @@ import {
 	CardText,
 } from "reactstrap";
 import VolunteersList from "../components/volunteers-list";
+import DisplayDate from "../components/display-date";
 
 class Admin extends React.Component {
 	constructor(props) {
@@ -151,13 +152,6 @@ class Admin extends React.Component {
 
 		let displayEvents = events.map(event => {
 			const { id, date, route } = event;
-			let displayDate = date;
-			displayDate = displayDate
-				.split("-")
-				.map(e => (e[0] === "0" ? e.slice(1) : e));
-			displayDate =
-				displayDate[2] + "/" + displayDate[1] + "/" + displayDate[0];
-
 			return (
 				<div key={id}>
 					<li>
@@ -165,7 +159,10 @@ class Admin extends React.Component {
 							<Row sm="4" className="row">
 								<Card body>
 									<CardTitle className="card_title">Date & Route:</CardTitle>
-									<CardText className="card_text">{`${displayDate} - ${route} Route`}</CardText>
+									<CardText className="card_text">
+										<DisplayDate date={date} />
+										{` - ${route} Route`}
+									</CardText>
 									<Button
 										onClick={this.getEventVolunteersByID(id)}
 										className="card_button"

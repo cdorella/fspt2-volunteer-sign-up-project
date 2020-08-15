@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 
 import RegistrationForm from "./registration-form";
+import DisplayDate from "./display-date";
 
 class EventDetails extends React.Component {
 	constructor(props) {
@@ -48,12 +49,6 @@ class EventDetails extends React.Component {
 			selectedTaskName,
 		} = this.state;
 
-		let displayDate = date;
-		displayDate = displayDate
-			.split("-")
-			.map(e => (e[0] === "0" ? e.slice(1) : e));
-		displayDate = displayDate[2] + "/" + displayDate[1] + "/" + displayDate[0];
-
 		return (
 			<div>
 				{selectedTask ? (
@@ -71,7 +66,11 @@ class EventDetails extends React.Component {
 							<Row className="row">
 								<Col sm="4">
 									<Card body className="text-center">
-										<CardTitle className="card_title">{`${displayDate} - ${route} Route`}</CardTitle>
+										<CardTitle className="card_title">
+											{" "}
+											<DisplayDate date={date} />
+											{` - ${route} Route`}
+										</CardTitle>
 										{tasks.map(task => (
 											<CardText className="text-center card_text">
 												<div key={task.id}>
@@ -92,7 +91,7 @@ class EventDetails extends React.Component {
 																	className="card_button"
 																	onClick={() =>
 																		this.getRegistrationForm(
-																			displayDate,
+																			date,
 																			route,
 																			task.spots_available,
 																			task.id,

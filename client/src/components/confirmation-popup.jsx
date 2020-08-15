@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import DisplayDate from "./display-date";
 
 const ConfirmationPopUp = props => {
 	const { className, name, date, route } = props;
@@ -29,8 +30,11 @@ const ConfirmationPopUp = props => {
 				</ModalHeader>
 				<ModalBody className="modal-text">
 					You have selected the following task: <br></br>
-					<strong>{name}</strong> on <strong>{date}</strong> for{" "}
-					<strong>{route}</strong> Route. <br></br>
+					<strong>{name}</strong> on{" "}
+					<strong>
+						<DisplayDate date={date} />
+					</strong>{" "}
+					for <strong>{route}</strong> Route. <br></br>
 					Do you wish to confirm?
 				</ModalBody>
 				<ModalFooter>
