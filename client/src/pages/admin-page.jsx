@@ -10,12 +10,10 @@ import {
 	FormGroup,
 	Label,
 	Input,
-	Card,
-	CardTitle,
-	CardText,
 } from "reactstrap";
+
 import VolunteersList from "../components/volunteers-list";
-import DisplayDate from "../components/display-date";
+import DisplayEvents from "../components/display-events";
 
 class Admin extends React.Component {
 	constructor(props) {
@@ -122,7 +120,11 @@ class Admin extends React.Component {
 			});
 	};
 
-	getEventVolunteersByID = eventId => () => {
+	idHandler = id => {
+		this.getEventVolunteersByID(id);
+	};
+
+	getEventVolunteersByID = eventId => {
 		fetch(`/api/events/${eventId}/volunteers`)
 			.then(response => response.json())
 			.then(response => {
@@ -149,33 +151,6 @@ class Admin extends React.Component {
 			selectedEvent,
 			volunteers,
 		} = this.state;
-
-		let displayEvents = events.map(event => {
-			const { id, date, route } = event;
-			return (
-				<div key={id}>
-					<li>
-						<div className="content">
-							<Row sm="4" className="row">
-								<Card body>
-									<CardTitle className="card_title">Date & Route:</CardTitle>
-									<CardText className="card_text">
-										<DisplayDate date={date} />
-										{` - ${route} Route`}
-									</CardText>
-									<Button
-										onClick={this.getEventVolunteersByID(id)}
-										className="card_button"
-									>
-										Select
-									</Button>
-								</Card>
-							</Row>
-						</div>
-					</li>
-				</div>
-			);
-		});
 
 		return (
 			<div>
@@ -294,7 +269,9 @@ class Admin extends React.Component {
 						)}
 					</Form>
 				)}
-				{eventsLoaded && displayEvents}
+				{eventsLoaded && (
+					<DisplayEvents idHandler={this.idHandler} events={events} />
+				)}
 				{selectedEvent && <VolunteersList {...volunteers} />}
 				<br></br>
 			</div>

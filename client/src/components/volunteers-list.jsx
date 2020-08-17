@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Card, CardText, CardTitle, CardSubtitle, Row } from "reactstrap";
+
 import DisplayDate from "./display-date";
 
 const VolunteersList = ({ date, route, volunteers }) => {

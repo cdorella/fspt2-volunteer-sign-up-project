@@ -1,10 +1,10 @@
 import React from "react";
 import "./home-page.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { Card, CardText, CardTitle, Button, Row } from "reactstrap";
+import { Button } from "reactstrap";
 
 import EventDetails from "../components/event-details";
-import DisplayDate from "../components/display-date";
+import DisplayEvents from "../components/display-events";
 
 class HomePage extends React.Component {
 	constructor(props) {
@@ -33,7 +33,11 @@ class HomePage extends React.Component {
 			});
 	};
 
-	getEventByID = eventId => () => {
+	idHandler = id => {
+		this.getEventByID(id);
+	};
+
+	getEventByID = eventId => {
 		fetch(`/api/events/${eventId}`)
 			.then(response => response.json())
 			.then(response => {
@@ -50,33 +54,6 @@ class HomePage extends React.Component {
 
 	render() {
 		const { events, eventsLoaded, selectedEvent, eventDetails } = this.state;
-
-		let displayEvents = events.map(event => {
-			const { id, date, route } = event;
-			return (
-				<div key={id}>
-					<li>
-						<div className="content">
-							<Row sm="4" className="row">
-								<Card body>
-									<CardTitle className="card_title">Date & Route:</CardTitle>
-									<CardText className="card_text">
-										<DisplayDate date={date} />
-										{` - ${route} Route`}
-									</CardText>
-									<Button
-										onClick={this.getEventByID(id)}
-										className="card_button"
-									>
-										Select
-									</Button>
-								</Card>
-							</Row>
-						</div>
-					</li>
-				</div>
-			);
-		});
 
 		return (
 			<div>
@@ -102,7 +79,9 @@ class HomePage extends React.Component {
 					</div>
 				)}
 				<hr />
-				{eventsLoaded && displayEvents}
+				{eventsLoaded && (
+					<DisplayEvents idHandler={this.idHandler} events={events} />
+				)}
 				<br></br>
 				{selectedEvent && <EventDetails {...eventDetails} />}
 				<br></br>

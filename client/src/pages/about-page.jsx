@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./about-page.css";
-import ContactForm from "../components/contact-form";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
+
+import ContactForm from "../components/contact-form";
 
 const About = props => {
 	const { className } = props;
