@@ -32,8 +32,8 @@ Deployment: Heroku.
 
 ## API Routes Plan
 
-<img src="images/API%20Routes%201.JPG">
-<img src="images/API%20Routes%202.JPG">
+<img src="images/API1.JPG">
+<img src="images/API2.JPG">
 
 ## Project Architecture
 
